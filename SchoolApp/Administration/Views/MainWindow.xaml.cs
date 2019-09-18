@@ -36,6 +36,18 @@ namespace Administration
         {
             //Temporary code, this is not how we want to do this
             tmp.Visibility = Visibility.Visible;
+
+            //Whenever the SchoolSetupView is displayed, we want the DepartmentsSetupView to be collapsed:
+            tmp1.Visibility = Visibility.Collapsed;
+        }
+
+        private void DisplayDepartmentsSetupView(object sender, RoutedEventArgs e)
+        {
+            //Temporary code, this is not how we want to do this
+            tmp1.Visibility = Visibility.Visible;
+
+            //Whenever the DepartmentsSetupView is displayed, we want the SchoolSetupView to be collapsed:
+            tmp.Visibility = Visibility.Collapsed;
         }
 
         private void OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
