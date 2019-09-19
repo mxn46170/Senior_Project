@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:Administration"
         mc:Ignorable="d"
         Title="" Height="750" Width="1100" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen">
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height=".08*"/>
@@ -21,7 +21,7 @@
         <StackPanel Grid.Column="2" 
                     Background="Black" 
                     MouseLeftButtonDown="OnMouseLeftButtonDown">
-            
+
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="4.3*"/>
@@ -82,7 +82,8 @@
             <Button Content="{StaticResource Departmentslbl}" 
                     FontSize="16" 
                     VerticalContentAlignment="Center"
-                    Margin="10 40 10 0" />
+                    Margin="10 40 10 0"
+                    Click="DisplayDepartmentsSetupView"/>
             <Button Content="{StaticResource MajorMinorlbl}" 
                     FontSize="16" 
                     VerticalContentAlignment="Center"
@@ -94,19 +95,19 @@
             <Button Content="{StaticResource BuildingRoomslbl}"
                     FontSize="16" 
                     VerticalContentAlignment="Center"
-                    Margin="10 40 10 0" />
+                    Margin="10 40 10 0"
+                    Click="DisplayBuildingsSetupView"/>
             <Button Content="{StaticResource Mascotlbl}" 
                     FontSize="16" 
                     VerticalContentAlignment="Center" 
                     Margin="10 40 10 0" />
         </StackPanel>
-        
+
         <!-- Temporary, this is not how this should be done-->
         <controls:SchoolSetupView x:Name="tmp" Grid.Row="1" Grid.Column="1" Visibility="Hidden" />
+        <controls:DepartmentsSetupView x:Name="tmp1" Grid.Row="1" Grid.Column="1" Visibility="Hidden" />
+        <controls:BuildingsSetupView x:Name="tmp4" Grid.Row="1" Grid.Column="1" Visibility="Hidden" />
         <!--embedding a usercontrol in a Window ^^^ -->
 
-
     </Grid>
-
-
 </Window>
