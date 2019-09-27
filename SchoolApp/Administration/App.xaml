@@ -17,6 +17,9 @@
             <sys:String x:Key="Professorslbl">Professors</sys:String>
             <sys:String x:Key="BuildingRoomslbl">Building / Rooms</sys:String>
             <sys:String x:Key="Mascotlbl">Mascot</sys:String>
+            <sys:String x:Key="Savelbl">Save</sys:String>
+            <sys:String x:Key="Cancellbl">Cancel</sys:String>
+            
 
             <!--Hard-coded Image locations-->
             <BitmapImage x:Key="HomeIcon" UriSource="..\Images\Icons\Home.png"/>
