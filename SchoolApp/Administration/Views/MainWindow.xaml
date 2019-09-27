@@ -19,6 +19,9 @@
         <DataTemplate DataType="{x:Type ViewModels:SchoolSetupViewModel}">
             <controls:SchoolSetupView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type ViewModels:DepartmentsSetupViewModel}">
+            <controls:DepartmentsSetupView/>
+        </DataTemplate>
     </Window.Resources>
 
     <Grid>
@@ -97,7 +100,8 @@
             <Button Content="{StaticResource Departmentslbl}" 
                     FontSize="16" 
                     VerticalContentAlignment="Center"
-                    Margin="10 40 10 0" />
+                    Margin="10 40 10 0"
+                    Command="{Binding DepartmentsSetupCommand}"/>
             <Button Content="{StaticResource MajorMinorlbl}" 
                     FontSize="16" 
                     VerticalContentAlignment="Center"
