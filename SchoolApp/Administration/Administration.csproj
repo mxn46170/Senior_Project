@@ -59,6 +59,7 @@
     </ApplicationDefinition>
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\BuildingsSetupViewModel.cs" />
+    <Compile Include="ViewModels\CoursesViewModel.cs" />
     <Compile Include="ViewModels\DepartmentsSetupViewModel.cs" />
     <Compile Include="ViewModels\MajorMinorViewModel.cs" />
     <Compile Include="ViewModels\NavigationViewModel.cs" />
@@ -67,6 +68,9 @@
     <Compile Include="ViewModels\StudentsViewModel.cs" />
     <Compile Include="Views\BuildingsSetupView.xaml.cs">
       <DependentUpon>BuildingsSetupView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CoursesView.xaml.cs">
+      <DependentUpon>CoursesView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DepartmentsSetupView.xaml.cs">
       <DependentUpon>DepartmentsSetupView.xaml</DependentUpon>
@@ -84,6 +88,10 @@
       <DependentUpon>StudentsView.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\BuildingsSetupView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CoursesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

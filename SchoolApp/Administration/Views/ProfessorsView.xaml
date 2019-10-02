@@ -17,7 +17,7 @@
             <TextBlock Text="{StaticResource LastName}" FontWeight="Bold" FontSize="16" Margin="0 40 0 8"/>
             <TextBox Width="400" HorizontalAlignment="Left" FontSize="14"/>
 
-            <TextBlock Text="{StaticResource Department}" FontWeight="Bold" FontSize="16" Margin="0 40 0 8"/>
+            <TextBlock Text="{StaticResource Departmentlbl}" FontWeight="Bold" FontSize="16" Margin="0 40 0 8"/>
             <ComboBox Width="150" HorizontalAlignment="Left" FontSize="14"/>
 
             <ListView Height="300" Width="400" HorizontalAlignment="Left" Margin="0 40 0 8">

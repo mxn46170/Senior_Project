@@ -10,7 +10,7 @@
             <sys:String x:Key="UsernamePwd">Username / Password</sys:String>
             <sys:String x:Key="PersonalInfo">Personal Information</sys:String>
             <sys:String x:Key="Modulelbl">Admin</sys:String>
-            <sys:String x:Key="SchoolSetuplbl">School Setup</sys:String>
+            <sys:String x:Key="SchoolSetuplbl">School Information</sys:String>
             <sys:String x:Key="SchoolNamelbl">School Name</sys:String>
             <sys:String x:Key="Addresslbl">Address</sys:String>
             <sys:String x:Key="Statelbl">State</sys:String>
@@ -25,7 +25,7 @@
             <sys:String x:Key="AddMascotlbl">Mascot</sys:String>
             <sys:String x:Key="FirstName">First Name</sys:String>
             <sys:String x:Key="LastName">Last Name</sys:String>
-            <sys:String x:Key="Department">Department</sys:String>
+            <sys:String x:Key="Departmentlbl">Department</sys:String>
             <sys:String x:Key="Savelbl">Save</sys:String>
             <sys:String x:Key="Cancellbl">Cancel</sys:String>
             <sys:String x:Key="Addlbl">Add</sys:String>
@@ -41,6 +41,10 @@
             <sys:String x:Key="AddStudentsbtn">Add Student</sys:String>
             <sys:String x:Key="EditStudentsbtn">Edit Student</sys:String>
             <sys:String x:Key="Searchbtn">Search</sys:String>
+            <sys:String x:Key="Deletelbl">Delete</sys:String>
+            <sys:String x:Key="CourseNamelbl">Course Name</sys:String>
+            <sys:String x:Key="AddPreReqslbl">Add Pre-requisites</sys:String>
+            <sys:String x:Key="Courseslbl">Courses</sys:String>
 
             <!--Hard-coded Image locations-->
             <BitmapImage x:Key="HomeIcon" UriSource="..\Images\Icons\Home.png"/>
