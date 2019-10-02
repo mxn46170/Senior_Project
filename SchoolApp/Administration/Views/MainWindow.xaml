@@ -92,7 +92,7 @@
             </Grid>
         </StackPanel>
 
-        <StackPanel Background="Black" >
+        <StackPanel Background="Black" MouseLeftButtonDown="OnMouseLeftButtonDown">
             <TextBlock Text="{StaticResource Modulelbl}" 
                        Foreground="White" 
                        FontSize="40" 
