@@ -10,7 +10,7 @@
             <sys:String x:Key="UsernamePwd">Username / Password</sys:String>
             <sys:String x:Key="PersonalInfo">Personal Information</sys:String>
             <sys:String x:Key="Modulelbl">Admin</sys:String>
-            <sys:String x:Key="SchoolSetuplbl">School Setup</sys:String>
+            <sys:String x:Key="SchoolSetuplbl">School Information</sys:String>
             <sys:String x:Key="SchoolNamelbl">School Name</sys:String>
             <sys:String x:Key="Addresslbl">Address</sys:String>
             <sys:String x:Key="Statelbl">State</sys:String>
