@@ -37,12 +37,14 @@
             <sys:String x:Key="Removelbl">Remove</sys:String>
             <sys:String x:Key="Editlbl">Edit</sys:String>
             <sys:String x:Key="Abbrlbl">Abbr</sys:String>
+            <sys:String x:Key="Studentslbl">Students</sys:String>
+            <sys:String x:Key="AddStudentsbtn">Add Student</sys:String>
+            <sys:String x:Key="EditStudentsbtn">Edit Student</sys:String>
+            <sys:String x:Key="Searchbtn">Search</sys:String>
             <sys:String x:Key="Deletelbl">Delete</sys:String>
             <sys:String x:Key="CourseNamelbl">Course Name</sys:String>
             <sys:String x:Key="AddPreReqslbl">Add Pre-requisites</sys:String>
             <sys:String x:Key="Courseslbl">Courses</sys:String>
-
-
 
             <!--Hard-coded Image locations-->
             <BitmapImage x:Key="HomeIcon" UriSource="..\Images\Icons\Home.png"/>

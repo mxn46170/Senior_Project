@@ -30,6 +30,9 @@
         <DataTemplate DataType="{x:Type ViewModels:MajorMinorViewModel}">
             <controls:MajorMinorView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type ViewModels:StudentsViewModel}">
+            <controls:StudentsView/>
+        </DataTemplate>
         <DataTemplate DataType="{x:Type ViewModels:CoursesViewModel}">
             <controls:CoursesView/>
         </DataTemplate>
@@ -130,7 +133,11 @@
                     VerticalContentAlignment="Center"
                     Margin="10 40 10 0"
                     Command="{Binding CoursesCommand}"/>
-            
+            <Button Content="{StaticResource Studentslbl}"
+                    FontSize="16" 
+                    VerticalContentAlignment="Center"
+                    Margin="10 40 10 0"
+                    Command="{Binding StudentsCommand}"/>
         </StackPanel>
 
         <ContentControl  Content="{Binding SelectedViewModel}" Grid.Column="1" Grid.Row="1"/>
