@@ -65,6 +65,7 @@
     <Compile Include="ViewModels\NavigationViewModel.cs" />
     <Compile Include="ViewModels\SchoolSetupViewModel.cs" />
     <Compile Include="ViewModels\ProfessorsViewModel.cs" />
+    <Compile Include="ViewModels\SchoolYearViewModel.cs" />
     <Compile Include="ViewModels\StudentsViewModel.cs" />
     <Compile Include="Views\BuildingsSetupView.xaml.cs">
       <DependentUpon>BuildingsSetupView.xaml</DependentUpon>
@@ -83,6 +84,9 @@
     </Compile>
     <Compile Include="Views\SchoolSetupView.xaml.cs">
       <DependentUpon>SchoolSetupView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SchoolYearView.xaml.cs">
+      <DependentUpon>SchoolYearView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\StudentsView.xaml.cs">
       <DependentUpon>StudentsView.xaml</DependentUpon>
@@ -120,6 +124,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\SchoolSetupView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SchoolYearView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
