@@ -18,6 +18,9 @@
         <DataTemplate DataType="{x:Type ViewModels:SchoolSetupViewModel}">
             <controls:SchoolSetupView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type ViewModels:SchoolYearViewModel}">
+            <controls:SchoolYearView/>
+        </DataTemplate>
         <DataTemplate DataType="{x:Type ViewModels:ProfessorsViewModel}">
             <controls:ProfessorsView/>
         </DataTemplate>
@@ -108,6 +111,11 @@
                     VerticalContentAlignment="Center" 
                     Margin="10 20 10 0" 
                     Command="{Binding SchoolSetupCommand}"/>
+            <Button Content="{StaticResource SchoolYearlbl}" 
+                    FontSize="16" 
+                    VerticalContentAlignment="Center" 
+                    Margin="10 40 10 0" 
+                    Command="{Binding SchoolYearCommand}"/>
             <Button Content="{StaticResource BuildingRoomslbl}"
                     FontSize="16" 
                     VerticalContentAlignment="Center"

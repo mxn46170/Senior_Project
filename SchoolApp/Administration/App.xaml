@@ -11,6 +11,7 @@
             <sys:String x:Key="PersonalInfo">Personal Information</sys:String>
             <sys:String x:Key="Modulelbl">Admin</sys:String>
             <sys:String x:Key="SchoolSetuplbl">School Information</sys:String>
+            <sys:String x:Key="SchoolYearlbl">School Year</sys:String>
             <sys:String x:Key="SchoolNamelbl">School Name</sys:String>
             <sys:String x:Key="Addresslbl">Address</sys:String>
             <sys:String x:Key="Statelbl">State</sys:String>
@@ -45,6 +46,13 @@
             <sys:String x:Key="CourseNamelbl">Course Name</sys:String>
             <sys:String x:Key="AddPreReqslbl">Add Pre-requisites</sys:String>
             <sys:String x:Key="Courseslbl">Courses</sys:String>
+            <sys:String x:Key="CurrentSchoolYearlbl">Current School Year</sys:String>
+            <sys:String x:Key="StartDatelbl">Start Date</sys:String>
+            <sys:String x:Key="EndDatelbl">End Date</sys:String>
+            <sys:String x:Key="Semesterslbl">Semesters</sys:String>
+            <sys:String x:Key="Springlbl">Spring</sys:String>
+            <sys:String x:Key="Falllbl">Fall</sys:String>
+            <sys:String x:Key="Summerlbl">Summer</sys:String>
 
             <!--Hard-coded Image locations-->
             <BitmapImage x:Key="HomeIcon" UriSource="..\Images\Icons\Home.png"/>
