@@ -177,58 +177,16 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Icons\Account.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Icons\Add_Account.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Icons\Add_Account_2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Icons\books.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\Icons\Class.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Icons\computer.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Icons\Courses.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\Icons\Email.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Icons\exam.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Icons\Grades.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Icons\Home.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Icons\Homework.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Icons\Homework_2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Icons\network.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Icons\Professors.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Icons\schedule.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Icons\school.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Icons\search.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Icons\Search_2.png" />
@@ -249,16 +207,31 @@
     <Resource Include="Images\default_mascot.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Icons\studying.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Icons\teacher.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Icons\university.png" />
-  </ItemGroup>
-  <ItemGroup>
     <SplashScreen Include="Images\SchoolU_Splash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\Admin.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\Calendar.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\School.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\Department.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\Major.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\Buildings.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\Courses.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\Professors.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
