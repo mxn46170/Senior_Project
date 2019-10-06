@@ -58,6 +58,16 @@
             <BitmapImage x:Key="HomeIcon" UriSource="..\Images\Icons\Home.png"/>
             <BitmapImage x:Key="SettingsIcon" UriSource="..\Images\Icons\Settings.png"/>
             <BitmapImage x:Key="ShutDownIcon" UriSource="..\Images\Icons\Shutdown.png"/>
+            <BitmapImage x:Key="AdminIcon" UriSource="..\Images\Icons\Admin.ico"/>
+            <BitmapImage x:Key="ProfessorsIcon" UriSource="..\Images\Icons\Professors.ico"/>
+            <BitmapImage x:Key="StudentIcon" UriSource="..\Images\Icons\Student.png"/>
+            <BitmapImage x:Key="SchoolInfoIcon" UriSource="..\Images\Icons\School.ico"/>
+            <BitmapImage x:Key="CalendarIcon" UriSource="..\Images\Icons\Calendar.ico"/>
+            <BitmapImage x:Key="BuildingsIcon" UriSource="..\Images\Icons\Buildings.ico"/>
+            <BitmapImage x:Key="DepartmentsIcon" UriSource="..\Images\Icons\Department.png"/>
+            <BitmapImage x:Key="MajorsIcon" UriSource="..\Images\Icons\Major.ico"/>
+            <BitmapImage x:Key="CoursesIcon" UriSource="..\Images\Icons\Courses.ico"/>
+
 
             <!--Themes-->
         <ResourceDictionary.MergedDictionaries>
