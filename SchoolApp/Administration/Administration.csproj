@@ -33,6 +33,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>SchoolU.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="SchoolU_Database">
       <HintPath>..\SchoolU_Database\bin\Debug\SchoolU_Database.dll</HintPath>
@@ -48,6 +51,9 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="UserLogin">
+      <HintPath>..\UserLogin\bin\Debug\UserLogin.exe</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -61,6 +67,7 @@
     <Compile Include="ViewModels\BuildingsSetupViewModel.cs" />
     <Compile Include="ViewModels\CoursesViewModel.cs" />
     <Compile Include="ViewModels\DepartmentsSetupViewModel.cs" />
+    <Compile Include="ViewModels\DialogResult.cs" />
     <Compile Include="ViewModels\MajorMinorViewModel.cs" />
     <Compile Include="ViewModels\NavigationViewModel.cs" />
     <Compile Include="ViewModels\SchoolSetupViewModel.cs" />
@@ -232,6 +239,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Icons\Home.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\Logout.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="SchoolU.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
