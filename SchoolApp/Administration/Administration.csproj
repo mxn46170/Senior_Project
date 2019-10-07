@@ -189,13 +189,7 @@
     <Resource Include="Images\Icons\Search_2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Icons\Settings.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\Icons\Settings_2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Icons\Shutdown.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Icons\Student.png" />
