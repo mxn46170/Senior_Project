@@ -70,7 +70,7 @@
                             Orientation="Horizontal">
                     <Button Height="40" 
                             Width="40" 
-                            ToolTip="Home" 
+                            ToolTip="{StaticResource Homelbl}" 
                             Padding="-8" 
                             Margin="10 0 0 0">
                         <Image Source="{StaticResource HomeIcon}" 
@@ -79,7 +79,7 @@
                     </Button>
                     <Button Height="40" 
                             Width="40" 
-                            ToolTip="Settings" 
+                            ToolTip="{StaticResource Settingslbl}" 
                             Padding="-8" 
                             Margin="10 0 0 0">
                         <Image Source="{StaticResource SettingsIcon}" 
@@ -89,7 +89,7 @@
                     <Button Height="40" 
                             Width="40" 
                             Click="ShutDown" 
-                            ToolTip="Shutdown" 
+                            ToolTip="{StaticResource Shutdownlbl}" 
                             Padding="-8" 
                             Margin="10 0 0 0">
                         <Image Source="{StaticResource ShutDownIcon}" 
