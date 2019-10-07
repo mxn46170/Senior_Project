@@ -55,9 +55,9 @@
             <sys:String x:Key="Summerlbl">Summer</sys:String>
 
             <!--Hard-coded Image locations-->
-            <BitmapImage x:Key="HomeIcon" UriSource="..\Images\Icons\Home.png"/>
-            <BitmapImage x:Key="SettingsIcon" UriSource="..\Images\Icons\Settings.png"/>
-            <BitmapImage x:Key="ShutDownIcon" UriSource="..\Images\Icons\Shutdown.png"/>
+            <BitmapImage x:Key="HomeIcon" UriSource="..\Images\Icons\Home.ico"/>
+            <BitmapImage x:Key="SettingsIcon" UriSource="..\Images\Icons\Settings.ico"/>
+            <BitmapImage x:Key="ShutDownIcon" UriSource="..\Images\Icons\Shutdown.ico"/>
             <BitmapImage x:Key="AdminIcon" UriSource="..\Images\Icons\Admin.ico"/>
             <BitmapImage x:Key="ProfessorsIcon" UriSource="..\Images\Icons\Professors.ico"/>
             <BitmapImage x:Key="StudentIcon" UriSource="..\Images\Icons\Student.png"/>
