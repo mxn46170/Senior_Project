@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Administration.ViewModels
 {
-    public class NavigationViewModel : INotifyPropertyChanged
+    public class NavigationViewModel : BaseViewModel
     {
         #region Fields
         private object selectedViewModel;
@@ -140,16 +142,29 @@ namespace Administration.ViewModels
         }
         #endregion
 
-        #region INotifyPropertyChanged
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void propertyChanged([CallerMemberName] String propertyName = "")
+        public class MainWindowViewModel
         {
-            if (PropertyChanged != null)
+            public void ExitApp()
             {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+                var result = MessageBox.Show("Are you sure you want to Exit Administration?", "Exiting Administration", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if (result == MessageBoxResult.Yes)
+                {
+                    Application.Current.Shutdown();
+                }
+                return;
+            }
+
+            public void LogOut()
+            {
+                var result = MessageBox.Show("Are you sure you want to Log out?", "Logging out", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if (result == MessageBoxResult.Yes)
+                {
+                    Process.Start("UserLogin.exe");
+                    Application.Current.Shutdown();
+                }
+                return;
             }
         }
-        #endregion
+
     }
 }
