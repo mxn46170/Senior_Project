@@ -59,7 +59,7 @@
 
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="4.3*"/>
+                    <ColumnDefinition Width="3*"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
@@ -85,6 +85,15 @@
                         <Image Source="{StaticResource SettingsIcon}" 
                                Height="30" 
                                Width="30" />
+                    </Button>
+                    <Button Height="40" 
+                            Width="40"  
+                            ToolTip="{StaticResource Logoutlbl}" 
+                            Padding="-8" 
+                            Margin="10 0 0 0" Click="LogOut">
+                        <Image Source="{StaticResource LogOutIcon}" 
+                               Height="35" 
+                               Width="35"/>
                     </Button>
                     <Button Height="40" 
                             Width="40" 

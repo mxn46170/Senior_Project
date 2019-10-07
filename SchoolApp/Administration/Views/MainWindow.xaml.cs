@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static Administration.ViewModels.NavigationViewModel;
 
 namespace Administration
 {
@@ -24,6 +25,7 @@ namespace Administration
     public partial class MainWindow : Window
     {
         private readonly NavigationViewModel nav = new NavigationViewModel();
+        private readonly MainWindowViewModel mvm = new MainWindowViewModel();
         public MainWindow()
         {
             Thread.Sleep(1500);
@@ -33,7 +35,8 @@ namespace Administration
 
         private void ShutDown(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            mvm.ExitApp();
+            //Application.Current.Shutdown();
             //check if the current screen has any unsaved data -> output message to save or not?
         }
 
@@ -42,6 +45,11 @@ namespace Administration
             base.OnMouseLeftButtonDown(e);
             // Begin dragging the window
             DragMove();
+        }
+
+        private void LogOut(object sender, RoutedEventArgs e)
+        {
+            mvm.LogOut();
         }
     }
 }
