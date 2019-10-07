@@ -67,7 +67,6 @@
     <Compile Include="ViewModels\BuildingsSetupViewModel.cs" />
     <Compile Include="ViewModels\CoursesViewModel.cs" />
     <Compile Include="ViewModels\DepartmentsSetupViewModel.cs" />
-    <Compile Include="ViewModels\DialogResult.cs" />
     <Compile Include="ViewModels\MajorMinorViewModel.cs" />
     <Compile Include="ViewModels\NavigationViewModel.cs" />
     <Compile Include="ViewModels\SchoolSetupViewModel.cs" />
