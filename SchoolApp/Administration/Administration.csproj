@@ -186,9 +186,6 @@
     <Resource Include="Images\Icons\Grades.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Icons\Home.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\Icons\Search_2.png" />
   </ItemGroup>
   <ItemGroup>
@@ -232,6 +229,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Icons\Professors.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\Shutdown.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\Settings.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\Home.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
