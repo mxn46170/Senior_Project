@@ -53,6 +53,9 @@
             <sys:String x:Key="Springlbl">Spring</sys:String>
             <sys:String x:Key="Falllbl">Fall</sys:String>
             <sys:String x:Key="Summerlbl">Summer</sys:String>
+            <sys:String x:Key="Shutdownlbl">Shutdown</sys:String>
+            <sys:String x:Key="Settingslbl">Settings</sys:String>
+            <sys:String x:Key="Homelbl">Home</sys:String>
 
             <!--Hard-coded Image locations-->
             <BitmapImage x:Key="HomeIcon" UriSource="..\Images\Icons\Home.ico"/>
