@@ -45,6 +45,11 @@
             <sys:String x:Key="CourseNamelbl">Course Name</sys:String>
             <sys:String x:Key="AddPreReqslbl">Add Pre-requisites</sys:String>
             <sys:String x:Key="Courseslbl">Courses</sys:String>
+            <sys:String x:Key="AC1">AC1</sys:String>
+            <sys:String x:Key="StudentYear">Student Year</sys:String>
+            <sys:String x:Key="Password">Password</sys:String>
+            <sys:String x:Key="Minorlbl">Minor</sys:String>
+            <sys:String x:Key="AddMinorbtn">Add Minor</sys:String>
 
             <!--Hard-coded Image locations-->
             <BitmapImage x:Key="HomeIcon" UriSource="..\Images\Icons\Home.png"/>
