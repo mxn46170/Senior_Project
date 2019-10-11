@@ -57,6 +57,13 @@
             <sys:String x:Key="Settingslbl">Settings</sys:String>
             <sys:String x:Key="Homelbl">Home</sys:String>
             <sys:String x:Key="Logoutlbl">Log Out</sys:String>
+            <sys:String x:Key="Eventslbl">Events</sys:String>
+            <sys:String x:Key="EventTitlelbl">Event Title</sys:String>
+            <sys:String x:Key="EventDescriptionlbl">Event Description</sys:String>
+            <sys:String x:Key="StartTimelbl">Start Time</sys:String>
+            <sys:String x:Key="EndTimelbl">End Time</sys:String>
+            <sys:String x:Key="SchoolWideEventlbl">School Wide Event</sys:String>
+            <sys:String x:Key="ToDepartmentlbl">To Department</sys:String>
 
             <!--Hard-coded Image locations-->
             <BitmapImage x:Key="HomeIcon" UriSource="..\Images\Icons\Home.ico"/>
@@ -72,6 +79,7 @@
             <BitmapImage x:Key="MajorsIcon" UriSource="..\Images\Icons\Major.ico"/>
             <BitmapImage x:Key="CoursesIcon" UriSource="..\Images\Icons\Courses.ico"/>
             <BitmapImage x:Key="LogOutIcon" UriSource="..\Images\Icons\Logout.ico"/>
+            <BitmapImage x:Key="EventsIcon" UriSource="..\Images\Icons\Events.ico"/>
 
 
             <!--Themes-->

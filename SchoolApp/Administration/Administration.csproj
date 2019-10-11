@@ -67,6 +67,7 @@
     <Compile Include="ViewModels\BuildingsSetupViewModel.cs" />
     <Compile Include="ViewModels\CoursesViewModel.cs" />
     <Compile Include="ViewModels\DepartmentsSetupViewModel.cs" />
+    <Compile Include="ViewModels\EventsViewModel.cs" />
     <Compile Include="ViewModels\MajorMinorViewModel.cs" />
     <Compile Include="ViewModels\NavigationViewModel.cs" />
     <Compile Include="ViewModels\SchoolSetupViewModel.cs" />
@@ -81,6 +82,9 @@
     </Compile>
     <Compile Include="Views\DepartmentsSetupView.xaml.cs">
       <DependentUpon>DepartmentsSetupView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EventsView.xaml.cs">
+      <DependentUpon>EventsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MajorMinorView.xaml.cs">
       <DependentUpon>MajorMinorView.xaml</DependentUpon>
@@ -106,6 +110,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\DepartmentsSetupView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EventsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -244,6 +252,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="SchoolU.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\Events.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
