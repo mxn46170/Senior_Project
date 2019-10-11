@@ -63,6 +63,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModels\AddEditStudentsViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\BuildingsSetupViewModel.cs" />
     <Compile Include="ViewModels\CoursesViewModel.cs" />
@@ -74,6 +75,9 @@
     <Compile Include="ViewModels\ProfessorsViewModel.cs" />
     <Compile Include="ViewModels\SchoolYearViewModel.cs" />
     <Compile Include="ViewModels\StudentsViewModel.cs" />
+    <Compile Include="Views\AddEditStudentsView.xaml.cs">
+      <DependentUpon>AddEditStudentsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\BuildingsSetupView.xaml.cs">
       <DependentUpon>BuildingsSetupView.xaml</DependentUpon>
     </Compile>
@@ -101,6 +105,10 @@
     <Compile Include="Views\StudentsView.xaml.cs">
       <DependentUpon>StudentsView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\AddEditStudentsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\BuildingsSetupView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
