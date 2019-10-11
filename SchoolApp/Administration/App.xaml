@@ -46,6 +46,11 @@
             <sys:String x:Key="CourseNamelbl">Course Name</sys:String>
             <sys:String x:Key="AddPreReqslbl">Add Pre-requisites</sys:String>
             <sys:String x:Key="Courseslbl">Courses</sys:String>
+            <sys:String x:Key="AC1">AC1</sys:String>
+            <sys:String x:Key="StudentYear">Student Year</sys:String>
+            <sys:String x:Key="Password">Password</sys:String>
+            <sys:String x:Key="Minorlbl">Minor</sys:String>
+            <sys:String x:Key="AddMinorbtn">Add Minor</sys:String>
             <sys:String x:Key="CurrentSchoolYearlbl">Current School Year</sys:String>
             <sys:String x:Key="StartDatelbl">Start Date</sys:String>
             <sys:String x:Key="EndDatelbl">End Date</sys:String>
