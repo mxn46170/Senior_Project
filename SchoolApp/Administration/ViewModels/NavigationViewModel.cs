@@ -29,7 +29,7 @@ namespace Administration.ViewModels
             MajorMinorCommand = new BaseCommand(OpenMajorMinorView);
             StudentsCommand = new BaseCommand(OpenStudentsView);
             CoursesCommand = new BaseCommand(OpenCoursesView);
-
+            EventsCommand = new BaseCommand(OpenEventsView);
         }
 
         #endregion
@@ -43,6 +43,7 @@ namespace Administration.ViewModels
         public ICommand MajorMinorCommand { get; set; }
         public ICommand StudentsCommand { get; set; }
         public ICommand CoursesCommand { get; set; }
+        public ICommand EventsCommand { get; set; }
 
 
         #endregion
@@ -103,7 +104,12 @@ namespace Administration.ViewModels
         {
             SelectedViewModel = new CoursesViewModel();
         }
-        
+
+        private void OpenEventsView(object obj)
+        {
+            SelectedViewModel = new EventsViewModel();
+        }
+
         #endregion
 
         public class MainWindowViewModel

@@ -7,7 +7,7 @@
         xmlns:ViewModels="clr-namespace:Administration.ViewModels" 
         x:Class="Administration.MainWindow"
         mc:Ignorable="d"
-        Height="750" Width="1100" ResizeMode="NoResize" 
+        Height="780" Width="1100" ResizeMode="NoResize" 
         WindowStyle="None" WindowStartupLocation="CenterScreen">
 
     <Window.DataContext>
@@ -39,6 +39,9 @@
         </DataTemplate>
         <DataTemplate DataType="{x:Type ViewModels:CoursesViewModel}">
             <controls:CoursesView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type ViewModels:EventsViewModel}">
+            <controls:EventsView/>
         </DataTemplate>
     </Window.Resources>
 
@@ -260,7 +263,24 @@
                         VerticalContentAlignment="Center"
                         Command="{Binding StudentsCommand}"/>
             </Grid>
-            
+
+            <!--Events-->
+            <Grid Margin="12 42 12 2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="{StaticResource EventsIcon}"
+                       Height="31"  
+                       Margin="-20 0 10 0" 
+                       Panel.ZIndex="1"/>
+                <Button Content="{StaticResource Eventslbl}"
+                        Grid.ColumnSpan="2"
+                        FontSize="16" 
+                        VerticalContentAlignment="Center"
+                        Command="{Binding EventsCommand}"/>
+            </Grid>
+
         </StackPanel>
 
         <ContentControl Content="{Binding SelectedViewModel}" 
