@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Administration.ViewModels
 {
-    public class NavigationViewModel : INotifyPropertyChanged
+    public class NavigationViewModel : BaseViewModel
     {
         #region Fields
         private object selectedViewModel;
@@ -20,6 +22,7 @@ namespace Administration.ViewModels
         public NavigationViewModel()
         {
             SchoolSetupCommand = new BaseCommand(OpenSchoolSetupView);
+            SchoolYearCommand = new BaseCommand(OpenSchoolYearView);
             ProfessorsCommand = new BaseCommand(OpenProfessorsView);
             DepartmentsSetupCommand = new BaseCommand(OpenDepartmentsSetupView);
             BuildingsSetupCommand = new BaseCommand(OpenBuildingsSetupView);
@@ -33,6 +36,7 @@ namespace Administration.ViewModels
 
         #region Public Properties
         public ICommand SchoolSetupCommand { get; set; }
+        public ICommand SchoolYearCommand { get; set; }
         public ICommand ProfessorsCommand { get; set; }
         public ICommand DepartmentsSetupCommand { get; set; }
         public ICommand BuildingsSetupCommand { get; set; }
@@ -63,6 +67,11 @@ namespace Administration.ViewModels
         private void OpenSchoolSetupView(object obj)
         {
             SelectedViewModel = new SchoolSetupViewModel();
+        }
+
+        private void OpenSchoolYearView(object obj)
+        {
+            SelectedViewModel = new SchoolYearViewModel();
         }
 
         private void OpenProfessorsView(object obj)
@@ -97,52 +106,29 @@ namespace Administration.ViewModels
         
         #endregion
 
-        //Do not remove the code below
-        #region ICommand
-        public class BaseCommand : ICommand
+        public class MainWindowViewModel
         {
-            private Predicate<object> _canExecute;
-            private Action<object> _method;
-            public event EventHandler CanExecuteChanged;
-
-            public BaseCommand(Action<object> method)
-                : this(method, null)
+            public void ExitApp()
             {
-            }
-
-            public BaseCommand(Action<object> method, Predicate<object> canExecute)
-            {
-                _method = method;
-                _canExecute = canExecute;
-            }
-
-            public bool CanExecute(object parameter)
-            {
-                if (_canExecute == null)
+                var result = MessageBox.Show("Are you sure you want to Exit Administration?", "Exiting Administration", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if (result == MessageBoxResult.Yes)
                 {
-                    return true;
+                    Application.Current.Shutdown();
                 }
-
-                return _canExecute(parameter);
+                return;
             }
 
-            public void Execute(object parameter)
+            public void LogOut()
             {
-                _method.Invoke(parameter);
+                var result = MessageBox.Show("Are you sure you want to Log out?", "Logging out", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if (result == MessageBoxResult.Yes)
+                {
+                    Process.Start("UserLogin.exe");
+                    Application.Current.Shutdown();
+                }
+                return;
             }
         }
-        #endregion
 
-        #region INotifyPropertyChanged
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void propertyChanged([CallerMemberName] String propertyName = "")
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
-        #endregion
     }
 }

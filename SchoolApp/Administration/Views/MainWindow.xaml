@@ -7,16 +7,20 @@
         xmlns:ViewModels="clr-namespace:Administration.ViewModels" 
         x:Class="Administration.MainWindow"
         mc:Ignorable="d"
-        Title="" Height="750" Width="1100" ResizeMode="NoResize" 
+        Height="750" Width="1100" ResizeMode="NoResize" 
         WindowStyle="None" WindowStartupLocation="CenterScreen">
 
     <Window.DataContext>
         <ViewModels:NavigationViewModel/>
     </Window.DataContext>
 
+    <!--Admin Navigation-->
     <Window.Resources>
         <DataTemplate DataType="{x:Type ViewModels:SchoolSetupViewModel}">
             <controls:SchoolSetupView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type ViewModels:SchoolYearViewModel}">
+            <controls:SchoolYearView/>
         </DataTemplate>
         <DataTemplate DataType="{x:Type ViewModels:ProfessorsViewModel}">
             <controls:ProfessorsView/>
@@ -48,13 +52,14 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
+        <!--Home, Settings, Shutdown-->
         <StackPanel Grid.Column="2" 
                     Background="Black" 
                     MouseLeftButtonDown="OnMouseLeftButtonDown">
 
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="4.3*"/>
+                    <ColumnDefinition Width="3*"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
@@ -65,7 +70,7 @@
                             Orientation="Horizontal">
                     <Button Height="40" 
                             Width="40" 
-                            ToolTip="Home" 
+                            ToolTip="{StaticResource Homelbl}" 
                             Padding="-8" 
                             Margin="10 0 0 0">
                         <Image Source="{StaticResource HomeIcon}" 
@@ -74,7 +79,7 @@
                     </Button>
                     <Button Height="40" 
                             Width="40" 
-                            ToolTip="Settings" 
+                            ToolTip="{StaticResource Settingslbl}" 
                             Padding="-8" 
                             Margin="10 0 0 0">
                         <Image Source="{StaticResource SettingsIcon}" 
@@ -82,9 +87,18 @@
                                Width="30" />
                     </Button>
                     <Button Height="40" 
+                            Width="40"  
+                            ToolTip="{StaticResource Logoutlbl}" 
+                            Padding="-8" 
+                            Margin="10 0 0 0" Click="LogOut">
+                        <Image Source="{StaticResource LogOutIcon}" 
+                               Height="35" 
+                               Width="35"/>
+                    </Button>
+                    <Button Height="40" 
                             Width="40" 
                             Click="ShutDown" 
-                            ToolTip="Shutdown" 
+                            ToolTip="{StaticResource Shutdownlbl}" 
                             Padding="-8" 
                             Margin="10 0 0 0">
                         <Image Source="{StaticResource ShutDownIcon}" 
@@ -95,52 +109,163 @@
             </Grid>
         </StackPanel>
 
-        <StackPanel Background="Black" MouseLeftButtonDown="OnMouseLeftButtonDown">
+        <!--Module Name-->
+        <StackPanel Background="Black" 
+                    MouseLeftButtonDown="OnMouseLeftButtonDown" 
+                    Orientation="Horizontal">
+            <Image Source="{StaticResource AdminIcon}" 
+                   Height="40" 
+                   Margin="20 0 10 0"/>
             <TextBlock Text="{StaticResource Modulelbl}" 
                        Foreground="White" 
                        FontSize="40" 
                        HorizontalAlignment="Center"/>
         </StackPanel>
+        
         <StackPanel Grid.Row="1" 
-                    Background="Black" >
-            <Button Content="{StaticResource SchoolSetuplbl}" 
-                    FontSize="16" 
-                    VerticalContentAlignment="Center" 
-                    Margin="10 20 10 0" 
-                    Command="{Binding SchoolSetupCommand}"/>
-            <Button Content="{StaticResource BuildingRoomslbl}"
-                    FontSize="16" 
-                    VerticalContentAlignment="Center"
-                    Margin="10 40 10 0"
-                    Command="{Binding BuildingsSetupCommand}"/>
-            <Button Content="{StaticResource Departmentslbl}" 
-                    FontSize="16" 
-                    VerticalContentAlignment="Center"
-                    Margin="10 40 10 0"
-                    Command="{Binding DepartmentsSetupCommand}"/>
-            <Button Content="{StaticResource MajorMinorlbl}" 
-                    FontSize="16" 
-                    VerticalContentAlignment="Center"
-                    Margin="10 40 10 0"
-                    Command="{Binding MajorMinorCommand}"/>
-            <Button Content="{StaticResource Professorslbl}"
-                    FontSize="16" 
-                    VerticalContentAlignment="Center"
-                    Margin="10 40 10 0"
-                    Command="{Binding ProfessorsCommand}"/>
-            <Button Content="{StaticResource Courseslbl}"
-                    FontSize="16" 
-                    VerticalContentAlignment="Center"
-                    Margin="10 40 10 0"
-                    Command="{Binding CoursesCommand}"/>
-            <Button Content="{StaticResource Studentslbl}"
-                    FontSize="16" 
-                    VerticalContentAlignment="Center"
-                    Margin="10 40 10 0"
-                    Command="{Binding StudentsCommand}"/>
+                    Background="Black">
+
+            <!--School Info-->
+            <Grid Margin="12 42 12 2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="{StaticResource SchoolInfoIcon}"
+                       Height="30"  
+                       Margin="-20 0 10 0"  
+                       Panel.ZIndex="1"/>
+                <Button Content="{StaticResource SchoolSetuplbl}" 
+                        FontSize="16" 
+                        VerticalContentAlignment="Center" 
+                        Grid.ColumnSpan="2"
+                        Command="{Binding SchoolSetupCommand}"/>
+            </Grid>
+
+            <!--School Year-->
+            <Grid Margin="12 42 12 2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="{StaticResource CalendarIcon}" 
+                       Height="30"  
+                       Margin="-20 0 10 0"  
+                       Panel.ZIndex="1"/>
+                <Button Content="{StaticResource SchoolYearlbl}" 
+                        FontSize="16" 
+                        VerticalContentAlignment="Center" 
+                        Grid.ColumnSpan="2"
+                        Command="{Binding SchoolYearCommand}"/>
+            </Grid>
+
+            <!--Buildings / Rooms-->
+            <Grid Margin="12 42 12 2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="{StaticResource BuildingsIcon}" 
+                       Height="30"
+                       Margin="-20 0 10 0"  
+                       Panel.ZIndex="1"/>
+                <Button Content="{StaticResource BuildingRoomslbl}"
+                        FontSize="16" 
+                        VerticalContentAlignment="Center" 
+                        Grid.ColumnSpan="2"
+                        Command="{Binding BuildingsSetupCommand}"/>
+            </Grid>
+
+            <!--Departments-->
+            <Grid Margin="12 42 12 2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="{StaticResource DepartmentsIcon}"
+                       Height="33"
+                       Margin="-17 0 10 0"  
+                       Panel.ZIndex="1"/>
+                <Button Content="{StaticResource Departmentslbl}" 
+                        FontSize="16" 
+                        VerticalContentAlignment="Center" 
+                        Grid.ColumnSpan="2"
+                        Command="{Binding DepartmentsSetupCommand}"/>
+            </Grid>
+
+            <!--Majors / Minors-->
+            <Grid Margin="12 42 12 2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="{StaticResource MajorsIcon}"
+                       Height="25"
+                       Margin="-17 0 10 0"  
+                       Panel.ZIndex="1"/>
+                <Button Content="{StaticResource MajorMinorlbl}" 
+                        FontSize="16" 
+                        VerticalContentAlignment="Center" 
+                        Grid.ColumnSpan="2"
+                        Command="{Binding MajorMinorCommand}"/>
+            </Grid>
+
+            <!--Professors-->
+            <Grid Margin="12 42 12 2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="{StaticResource ProfessorsIcon}"
+                       Height="33"  
+                       Margin="-20 0 10 0" 
+                       Panel.ZIndex="1"/>
+                <Button Content="{StaticResource Professorslbl}"
+                        Grid.ColumnSpan="2"
+                        FontSize="16"
+                        VerticalContentAlignment="Center"
+                        Command="{Binding ProfessorsCommand}"/>
+            </Grid>
+
+            <!--Courses-->
+            <Grid Margin="12 42 12 2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="{StaticResource CoursesIcon}"  
+                       Height="33"  
+                       Margin="-20 0 10 0"  
+                       Panel.ZIndex="1"/>
+                <Button Content="{StaticResource Courseslbl}"
+                        FontSize="16" 
+                        Grid.ColumnSpan="2"
+                        VerticalContentAlignment="Center"
+                        Command="{Binding CoursesCommand}"/>
+            </Grid>
+
+            <!--Students-->
+            <Grid Margin="12 42 12 2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="{StaticResource StudentIcon}"
+                       Height="31"  
+                       Margin="-20 0 10 0" 
+                       Panel.ZIndex="1"/>
+                <Button Content="{StaticResource Studentslbl}"
+                        Grid.ColumnSpan="2"
+                        FontSize="16" 
+                        VerticalContentAlignment="Center"
+                        Command="{Binding StudentsCommand}"/>
+            </Grid>
+            
         </StackPanel>
 
-        <ContentControl  Content="{Binding SelectedViewModel}" Grid.Column="1" Grid.Row="1"/>
+        <ContentControl Content="{Binding SelectedViewModel}" 
+                        Grid.Column="1" 
+                        Grid.Row="1"/>
 
 
     </Grid>

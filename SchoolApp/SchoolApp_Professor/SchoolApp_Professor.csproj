@@ -35,7 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="SchoolU_Database">
-      <HintPath>..\..\Senior Project Stuff\DB_dll\SchoolU_Database\bin\Debug\SchoolU_Database.dll</HintPath>
+      <HintPath>..\SchoolU_Database\bin\Debug\SchoolU_Database.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
