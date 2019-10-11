@@ -1,0 +1,90 @@
+﻿<Application x:Class="Administration.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             StartupUri="Views/MainWindow.xaml">
+    <Application.Resources>
+
+        <ResourceDictionary>
+        <!--Hard-coded strings-->
+            <sys:String x:Key="UsernamePwd">Username / Password</sys:String>
+            <sys:String x:Key="PersonalInfo">Personal Information</sys:String>
+            <sys:String x:Key="Modulelbl">Admin</sys:String>
+            <sys:String x:Key="SchoolSetuplbl">School Information</sys:String>
+            <sys:String x:Key="SchoolYearlbl">School Year</sys:String>
+            <sys:String x:Key="SchoolNamelbl">School Name</sys:String>
+            <sys:String x:Key="Addresslbl">Address</sys:String>
+            <sys:String x:Key="Statelbl">State</sys:String>
+            <sys:String x:Key="ZipCodelbl">Zip Code</sys:String>
+            <sys:String x:Key="Motto_OtherInfolbl">Motto/Other Information</sys:String>
+            <sys:String x:Key="Departmentslbl">Departments</sys:String>
+            <sys:String x:Key="DepartmentFieldlbl">Department Name</sys:String>
+            <sys:String x:Key="MajorMinorlbl">Major / Minor</sys:String>
+            <sys:String x:Key="Majorlbl">Major</sys:String>
+            <sys:String x:Key="Professorslbl">Professors</sys:String>
+            <sys:String x:Key="BuildingRoomslbl">Buildings / Rooms</sys:String>
+            <sys:String x:Key="AddMascotlbl">Mascot</sys:String>
+            <sys:String x:Key="FirstName">First Name</sys:String>
+            <sys:String x:Key="LastName">Last Name</sys:String>
+            <sys:String x:Key="Departmentlbl">Department</sys:String>
+            <sys:String x:Key="Savelbl">Save</sys:String>
+            <sys:String x:Key="Cancellbl">Cancel</sys:String>
+            <sys:String x:Key="Addlbl">Add</sys:String>
+            <sys:String x:Key="BuildingNamelbl">Building Name</sys:String>
+            <sys:String x:Key="BuildingAbbrlbl">Building Abbr</sys:String>
+            <sys:String x:Key="NumFLoorslbl">Number of Floors</sys:String>
+            <sys:String x:Key="NumRoomslbl">Number of Rooms per Floor</sys:String>
+            <sys:String x:Key="DepartmentAbbrlbl">Department Abbr</sys:String>
+            <sys:String x:Key="Removelbl">Remove</sys:String>
+            <sys:String x:Key="Editlbl">Edit</sys:String>
+            <sys:String x:Key="Abbrlbl">Abbr</sys:String>
+            <sys:String x:Key="Studentslbl">Students</sys:String>
+            <sys:String x:Key="AddStudentsbtn">Add Student</sys:String>
+            <sys:String x:Key="EditStudentsbtn">Edit Student</sys:String>
+            <sys:String x:Key="Searchbtn">Search</sys:String>
+            <sys:String x:Key="Deletelbl">Delete</sys:String>
+            <sys:String x:Key="CourseNamelbl">Course Name</sys:String>
+            <sys:String x:Key="AddPreReqslbl">Add Pre-requisites</sys:String>
+            <sys:String x:Key="Courseslbl">Courses</sys:String>
+            <sys:String x:Key="CurrentSchoolYearlbl">Current School Year</sys:String>
+            <sys:String x:Key="StartDatelbl">Start Date</sys:String>
+            <sys:String x:Key="EndDatelbl">End Date</sys:String>
+            <sys:String x:Key="Semesterslbl">Semesters</sys:String>
+            <sys:String x:Key="Springlbl">Spring</sys:String>
+            <sys:String x:Key="Falllbl">Fall</sys:String>
+            <sys:String x:Key="Summerlbl">Summer</sys:String>
+            <sys:String x:Key="StudentSearchlbl">Student Search</sys:String>
+            <sys:String x:Key="NumStudentslbl">Number of Students: </sys:String>
+            <sys:String x:Key="FirstNamelbl">First Name</sys:String>
+            <sys:String x:Key="LastNamelbl">Last Name</sys:String>
+            <sys:String x:Key="Minorlbl">Minor</sys:String>
+            <sys:String x:Key="StudentYearlbl">Student Year</sys:String>
+            <sys:String x:Key="ClearFiltersbtn">Clear Filters</sys:String>
+
+            <!--Hard-coded Image locations-->
+            <BitmapImage x:Key="HomeIcon" UriSource="..\Images\Icons\Home.png"/>
+            <BitmapImage x:Key="SettingsIcon" UriSource="..\Images\Icons\Settings.png"/>
+            <BitmapImage x:Key="ShutDownIcon" UriSource="..\Images\Icons\Shutdown.png"/>
+            <BitmapImage x:Key="AdminIcon" UriSource="..\Images\Icons\Admin.ico"/>
+            <BitmapImage x:Key="ProfessorsIcon" UriSource="..\Images\Icons\Professors.ico"/>
+            <BitmapImage x:Key="StudentIcon" UriSource="..\Images\Icons\Student.png"/>
+            <BitmapImage x:Key="SchoolInfoIcon" UriSource="..\Images\Icons\School.ico"/>
+            <BitmapImage x:Key="CalendarIcon" UriSource="..\Images\Icons\Calendar.ico"/>
+            <BitmapImage x:Key="BuildingsIcon" UriSource="..\Images\Icons\Buildings.ico"/>
+            <BitmapImage x:Key="DepartmentsIcon" UriSource="..\Images\Icons\Department.png"/>
+            <BitmapImage x:Key="MajorsIcon" UriSource="..\Images\Icons\Major.ico"/>
+            <BitmapImage x:Key="CoursesIcon" UriSource="..\Images\Icons\Courses.ico"/>
+
+
+            <!--Themes-->
+        <ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+            <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+            <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
+            <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+        </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+
+    </Application.Resources>
+</Application>
