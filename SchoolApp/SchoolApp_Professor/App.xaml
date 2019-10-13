@@ -10,7 +10,6 @@
         <!--Hard-coded strings-->
             <sys:String x:Key="UsernamePwd">Username / Password</sys:String>
             <sys:String x:Key="PersonalInfo">Personal Information</sys:String>
-            <sys:String x:Key="Userpasslbl">Username / Password</sys:String>
             <sys:String x:Key="Usernamelbl">Username</sys:String>
             <sys:String x:Key="Passwdlbl">Password</sys:String>
             <sys:String x:Key="Savelbl">Save</sys:String>
@@ -23,13 +22,21 @@
             <sys:String x:Key="AllStudentlbl">All Students</sys:String>
             <sys:String x:Key="Professorslbl">Professors</sys:String>
             <sys:String x:Key="SelectUserslbl">Select Users</sys:String>
-            
+            <sys:String x:Key="Professorlbl">Professor</sys:String>
+            <sys:String x:Key="Shutdownlbl">Shutdown</sys:String>
+            <sys:String x:Key="Settingslbl">Settings</sys:String>
+            <sys:String x:Key="Homelbl">Home</sys:String>
+            <sys:String x:Key="PersonalInfolbl">Personal Information</sys:String>
+            <sys:String x:Key="ChangePasswordlbl">Change Password</sys:String>
+            <sys:String x:Key="Cancellbl">Cancel</sys:String>
+            <sys:String x:Key="Logoutlbl">Log Out</sys:String>
 
 
             <!--Hard-coded Image locations-->
-            <BitmapImage x:Key="HomeIcon" UriSource="..\Images\Icons\Home.png"/>
-            <BitmapImage x:Key="SettingsIcon" UriSource="..\Images\Icons\Settings.png"/>
-            <BitmapImage x:Key="ShutDownIcon" UriSource="..\Images\Icons\Shutdown.png"/>
+            <BitmapImage x:Key="HomeIcon" UriSource="..\Images\Icons\Home.ico"/>
+            <BitmapImage x:Key="SettingsIcon" UriSource="..\Images\Icons\Settings.ico"/>
+            <BitmapImage x:Key="ShutDownIcon" UriSource="..\Images\Icons\Shutdown.ico"/>
+            <BitmapImage x:Key="LogOutIcon" UriSource="..\Images\Icons\Logout.ico"/>
 
             <!--Themes-->
         <ResourceDictionary.MergedDictionaries>

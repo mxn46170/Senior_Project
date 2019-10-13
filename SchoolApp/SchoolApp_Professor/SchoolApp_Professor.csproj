@@ -50,6 +50,9 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="UserLogin">
+      <HintPath>..\UserLogin\bin\Debug\UserLogin.exe</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -61,14 +64,18 @@
     </ApplicationDefinition>
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\EmailViewModel.cs" />
-    <Compile Include="ViewModels\NavigationViewModel.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\PersonalInformationViewModel.cs" />
+    <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\UsernamePasswordViewModel.cs" />
     <Compile Include="Views\EmailView.xaml.cs">
       <DependentUpon>EmailView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PersonalInformationView.xaml.cs">
       <DependentUpon>PersonalInformationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SettingsView.xaml.cs">
+      <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UsernamePasswordView.xaml.cs">
       <DependentUpon>UsernamePasswordView.xaml</DependentUpon>
@@ -90,6 +97,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\PersonalInformationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SettingsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -140,9 +151,6 @@
     <Resource Include="Images\Icons\Class.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Icons\computer.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\Icons\Courses.png" />
   </ItemGroup>
   <ItemGroup>
@@ -153,9 +161,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Icons\Grades.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Icons\Home.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Icons\Homework.png" />
@@ -182,13 +187,7 @@
     <Resource Include="Images\Icons\Search_2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Icons\Settings.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\Icons\Settings_2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Icons\Shutdown.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Icons\Student.png" />
@@ -215,6 +214,14 @@
   </ItemGroup>
   <ItemGroup>
     <SplashScreen Include="Images\SchoolU_Splash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\Logout.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\Home.ico" />
+    <Resource Include="Images\Icons\Settings.ico" />
+    <Resource Include="Images\Icons\Shutdown.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
