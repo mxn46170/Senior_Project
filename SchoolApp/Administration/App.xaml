@@ -7,7 +7,7 @@
 
         <ResourceDictionary>
         <!--Hard-coded strings-->
-            <sys:String x:Key="UsernamePwd">Username / Password</sys:String>
+            <sys:String x:Key="UsernamePwd">Change Password</sys:String>
             <sys:String x:Key="PersonalInfo">Personal Information</sys:String>
             <sys:String x:Key="Modulelbl">Admin</sys:String>
             <sys:String x:Key="SchoolSetuplbl">School Information</sys:String>
@@ -19,7 +19,7 @@
             <sys:String x:Key="Motto_OtherInfolbl">Motto/Other Information</sys:String>
             <sys:String x:Key="Departmentslbl">Departments</sys:String>
             <sys:String x:Key="DepartmentFieldlbl">Department Name</sys:String>
-            <sys:String x:Key="MajorMinorlbl">Major / Minor</sys:String>
+            <sys:String x:Key="Majorslbl">Majors</sys:String>
             <sys:String x:Key="Majorlbl">Major</sys:String>
             <sys:String x:Key="Professorslbl">Professors</sys:String>
             <sys:String x:Key="BuildingRoomslbl">Buildings / Rooms</sys:String>
@@ -33,7 +33,7 @@
             <sys:String x:Key="BuildingNamelbl">Building Name</sys:String>
             <sys:String x:Key="BuildingAbbrlbl">Building Abbr</sys:String>
             <sys:String x:Key="NumFLoorslbl">Number of Floors</sys:String>
-            <sys:String x:Key="NumRoomslbl">Number of Rooms per Floor</sys:String>
+            <sys:String x:Key="NumRoomslbl">Rooms per Floor</sys:String>
             <sys:String x:Key="DepartmentAbbrlbl">Department Abbr</sys:String>
             <sys:String x:Key="Removelbl">Remove</sys:String>
             <sys:String x:Key="Editlbl">Edit</sys:String>
@@ -69,6 +69,7 @@
             <sys:String x:Key="EndTimelbl">End Time</sys:String>
             <sys:String x:Key="SchoolWideEventlbl">School Wide Event</sys:String>
             <sys:String x:Key="ToDepartmentlbl">To Department</sys:String>
+            <sys:String x:Key="PhoneNumberlbl">Phone Number</sys:String>
 
             <!--Hard-coded Image locations-->
             <BitmapImage x:Key="HomeIcon" UriSource="..\Images\Icons\Home.ico"/>
