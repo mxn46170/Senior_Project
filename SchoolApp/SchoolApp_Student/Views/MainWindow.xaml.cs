@@ -32,7 +32,7 @@ namespace SchoolApp_Student
 
         private void ShutDown(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            mvm.ExitApp();
             //check if the current screen has any unsaved data -> output message to save or not?
         }
 
@@ -51,6 +51,11 @@ namespace SchoolApp_Student
         private void DisplayEmailView(object sender, RoutedEventArgs e)
         {
             Main.Content = new EmailViewModel();
+        }
+
+        private void Logout(object sender, RoutedEventArgs e)
+        {
+            mvm.LogOut();
         }
     }
 }

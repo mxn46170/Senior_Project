@@ -99,7 +99,7 @@
         <!-- -->
         <StackPanel Background="Black" 
                     MouseLeftButtonDown="OnMouseLeftButtonDown">
-            <TextBlock Text="{StaticResource Studetnlbl}" 
+            <TextBlock Text="{StaticResource Studentlbl}" 
                        FontWeight="Bold" 
                        HorizontalAlignment="Center" 
                        FontSize="25" 
