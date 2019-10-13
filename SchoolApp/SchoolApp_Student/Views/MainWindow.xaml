@@ -11,7 +11,7 @@
         WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
 
     <Window.DataContext>
-        <vms:NavigationViewModel/>
+        <vms:MainWindowViewModel/>
     </Window.DataContext>
 
     <Window.Resources>
@@ -24,7 +24,9 @@
         <DataTemplate DataType="{x:Type vms:EmailViewModel}">
             <controls:EmailView/>
         </DataTemplate>
-        
+        <DataTemplate DataType="{x:Type vms:SettingsViewModel}">
+            <controls:SettingsView/>
+        </DataTemplate>
     </Window.Resources>
 
     <Grid>
@@ -42,7 +44,7 @@
                     MouseLeftButtonDown="OnMouseLeftButtonDown">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="4.2*"/>
+                    <ColumnDefinition Width="3.2*"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
@@ -53,7 +55,7 @@
                             Orientation="Horizontal" >
                     <Button Height="40" 
                             Width="40" 
-                            ToolTip="Home" 
+                            ToolTip="{StaticResource Homelbl}" 
                             Padding="-8"
                             Margin="15 0 0 0">
                         <Image Source="{StaticResource HomeIcon}" 
@@ -62,17 +64,28 @@
                     </Button>
                     <Button Height="40" 
                             Width="40" 
-                            ToolTip="Settings" 
+                            ToolTip="{StaticResource Settingslbl}" 
                             Padding="-8" 
-                            Margin="15 0 0 0">
+                            Margin="15 0 0 0" 
+                            Click="DisplaySettingsView">
                         <Image Source="{StaticResource SettingsIcon}" 
                             Height="30" 
                             Width="30" />
                     </Button>
                     <Button Height="40" 
+                            Width="40"  
+                            ToolTip="{StaticResource Logoutlbl}" 
+                            Padding="-8" 
+                            Margin="10 0 0 0" 
+                            Click="Logout">
+                        <Image Source="{StaticResource LogOutIcon}" 
+                               Height="35" 
+                               Width="35"/>
+                    </Button>
+                    <Button Height="40" 
                             Width="40"
                             Click="ShutDown"
-                            ToolTip="Shutdown" 
+                            ToolTip="{StaticResource Shutdownlbl}"
                             Padding="-8" 
                             Margin="15 0 0 0">
                         <Image Source="{StaticResource ShutDownIcon}" 
@@ -83,10 +96,10 @@
             </Grid>
         </StackPanel>
 
-        <!---->
+        <!-- -->
         <StackPanel Background="Black" 
                     MouseLeftButtonDown="OnMouseLeftButtonDown">
-            <TextBlock Text="Student" 
+            <TextBlock Text="{StaticResource Studetnlbl}" 
                        FontWeight="Bold" 
                        HorizontalAlignment="Center" 
                        FontSize="25" 
@@ -96,25 +109,16 @@
 
         <StackPanel Grid.Row="1" 
                     Background="Black">
-            <Button Margin="20" 
-                    Height="40" 
-                    Content="{StaticResource PersonalInfolbl}" 
-                    FontSize="14"
-                    Command="{Binding PersonalInformationCommand}"/>
-            <Button 
-                    Margin="20"
-                    Height="40"
-                    Content="{StaticResource UsernamePwdlbl}"
-                    Command="{Binding UsernamePasswordCommand}"/>
-            <Button 
-                    Margin="20"
+            <Button Margin="20"
                     Height="40"
                     Content="{StaticResource Emaillbl}"
-                    Command="{Binding EmailCommand}"/>
+                    Click="DisplayEmailView"/>
         </StackPanel>
 
-        <ContentControl  Content="{Binding SelectedViewModel}" Grid.Column="1" Grid.Row="1"/>
-
+        <Frame x:Name="Main" 
+               Grid.Column="1" 
+               Grid.Row="1" 
+               NavigationUIVisibility="Hidden"/>
     </Grid>
     
 </Window>

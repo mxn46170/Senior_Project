@@ -22,12 +22,12 @@ namespace SchoolApp_Student
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly NavigationViewModel nav = new NavigationViewModel();
+        private readonly MainWindowViewModel mvm = new MainWindowViewModel();
         public MainWindow()
         {
             Thread.Sleep(1500);
             InitializeComponent();
-            DataContext = nav;
+            DataContext = mvm;
         }
 
         private void ShutDown(object sender, RoutedEventArgs e)
@@ -43,5 +43,14 @@ namespace SchoolApp_Student
             DragMove();
         }
 
+        private void DisplaySettingsView(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new SettingsViewModel();
+        }
+
+        private void DisplayEmailView(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new EmailViewModel();
+        }
     }
 }
