@@ -59,14 +59,18 @@
     </ApplicationDefinition>
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\EmailViewModel.cs" />
-    <Compile Include="ViewModels\NavigationViewModel.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\PersonalInformationViewModel.cs" />
+    <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\UsernamePasswordViewModel.cs" />
     <Compile Include="Views\EmailView.xaml.cs">
       <DependentUpon>EmailView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PersonalInformationView.xaml.cs">
       <DependentUpon>PersonalInformationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SettingsView.xaml.cs">
+      <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UsernamePasswordView.xaml.cs">
       <DependentUpon>UsernamePasswordView.xaml</DependentUpon>
@@ -88,6 +92,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\PersonalInformationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SettingsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
