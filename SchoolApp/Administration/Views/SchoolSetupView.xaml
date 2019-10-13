@@ -13,30 +13,82 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Text="{StaticResource SchoolSetuplbl}" FontSize="26" FontWeight="Bold" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="0 10 0 0"/>
+        <TextBlock Text="{StaticResource SchoolSetuplbl}" 
+                   FontSize="26"
+                   FontWeight="Bold" 
+                   Grid.ColumnSpan="2" 
+                   HorizontalAlignment="Center" 
+                   Margin="0 10 0 0"/>
 
-        <StackPanel Grid.Column="0" Margin="30 115 30 20">
-            <TextBlock Text="{StaticResource SchoolNamelbl}" FontWeight="Bold" FontSize="16" Margin="0 0 0 8"/>
-            <TextBox Width="400" HorizontalAlignment="Left" FontSize="14"/>
+        <StackPanel Grid.Column="0" 
+                    Margin="30 115 30 20">
+            <TextBlock Text="{StaticResource SchoolNamelbl}" 
+                       FontWeight="Bold" 
+                       FontSize="16"
+                       Margin="0 0 0 8"/>
+            <TextBox Width="400" 
+                     HorizontalAlignment="Left"
+                     FontSize="14"/>
 
-            <TextBlock Text="{StaticResource Addresslbl}" FontWeight="Bold" FontSize="16" Margin="0 40 0 8"/>
-            <TextBox Width="400" HorizontalAlignment="Left" FontSize="14"/>
+            <TextBlock Text="{StaticResource Addresslbl}" 
+                       FontWeight="Bold" 
+                       FontSize="16" 
+                       Margin="0 40 0 8"/>
+            <TextBox Width="400" 
+                     HorizontalAlignment="Left" 
+                     FontSize="14"/>
 
-            <TextBlock Text="{StaticResource Statelbl}" FontWeight="Bold" FontSize="16" Margin="0 40 0 8"/>
-            <ComboBox Width="150" HorizontalAlignment="Left" FontSize="14"/>
+            <TextBlock Text="{StaticResource Statelbl}" 
+                       FontWeight="Bold" 
+                       FontSize="16" 
+                       Margin="0 40 0 8"/>
+            <ComboBox Width="150" 
+                      HorizontalAlignment="Left" 
+                      FontSize="14"/>
 
-            <TextBlock Text="{StaticResource ZipCodelbl}" FontWeight="Bold" FontSize="16" Margin="0 40 0 8"/>
-            <TextBox Width="100" HorizontalAlignment="Left" FontSize="14"/>
+            <TextBlock Text="{StaticResource ZipCodelbl}" 
+                       FontWeight="Bold" 
+                       FontSize="16"
+                       Margin="0 40 0 8"/>
+            <TextBox Width="100"
+                     HorizontalAlignment="Left" 
+                     FontSize="14"/>
 
-            <TextBlock Text="{StaticResource Motto_OtherInfolbl}" FontWeight="Bold" FontSize="16" Margin="0 40 0 8"/>
-            <TextBox Width="400" HorizontalAlignment="Left" FontSize="14"/>
+            <TextBlock Text="{StaticResource Motto_OtherInfolbl}"
+                       FontWeight="Bold"
+                       FontSize="16"
+                       Margin="0 40 0 8"/>
+            <TextBox Width="400" 
+                     HorizontalAlignment="Left"
+                     FontSize="14"/>
         </StackPanel>
 
-        <Image Grid.Column="1" Width="300" Margin="0 0 0 150" Source="/Administration;component/Images/default_mascot.png"/>
-        <Button Grid.Column="1" Width="130" HorizontalAlignment="Center" Margin="10 220 0 0"  Content="{StaticResource AddMascotlbl}"/>
+        <Image Grid.Column="1"
+               Width="300" 
+               Margin="0 0 0 150" 
+               Source="/Administration;component/Images/default_mascot.png"/>
+        <Button Grid.Column="1" 
+                Width="130" 
+                HorizontalAlignment="Center" 
+                Margin="10 220 0 0"  
+                Content="{StaticResource AddMascotlbl}"/>
 
-        <Button Grid.Column="1" Height="30" Width="80" Content="{StaticResource Cancellbl}" FontSize="14" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0 0 30 30"/>
-        <Button Grid.Column="1" Height="30" Width="80" Content="{StaticResource Savelbl}" FontSize="14" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0 0 130 30"/>
+        <Button Grid.Column="1" 
+                Height="30" 
+                Width="80" 
+                Content="{StaticResource Cancellbl}" 
+                FontSize="14" 
+                HorizontalAlignment="Right" 
+                VerticalAlignment="Bottom" 
+                Margin="0 0 30 30"/>
+        <Button Grid.Column="1" 
+                Height="30"
+                Width="80"
+                Content="{StaticResource Savelbl}"
+                FontSize="14" 
+                HorizontalAlignment="Right" 
+                VerticalAlignment="Bottom" 
+                Margin="0 0 130 30"/>
 
     </Grid>
 </UserControl>

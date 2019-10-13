@@ -11,7 +11,7 @@
         WindowStyle="None" WindowStartupLocation="CenterScreen">
 
     <Window.DataContext>
-        <ViewModels:NavigationViewModel/>
+        <ViewModels:MainWindowViewModel/>
     </Window.DataContext>
 
     <!--Admin Navigation-->
@@ -43,6 +43,9 @@
         <DataTemplate DataType="{x:Type ViewModels:EventsViewModel}">
             <controls:EventsView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type ViewModels:AddEditStudentsViewModel}">
+            <controls:AddEditStudentsView/>
+        </DataTemplate>
     </Window.Resources>
 
     <Grid>
@@ -55,7 +58,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <!--Home, Settings, Shutdown-->
+        <!--Home, Settings, Logout, Shutdown-->
         <StackPanel Grid.Column="2" 
                     Background="Black" 
                     MouseLeftButtonDown="OnMouseLeftButtonDown">
@@ -93,7 +96,8 @@
                             Width="40"  
                             ToolTip="{StaticResource Logoutlbl}" 
                             Padding="-8" 
-                            Margin="10 0 0 0" Click="LogOut">
+                            Margin="10 0 0 0" 
+                            Click="LogOut">
                         <Image Source="{StaticResource LogOutIcon}" 
                                Height="35" 
                                Width="35"/>
@@ -124,7 +128,7 @@
                        FontSize="40" 
                        HorizontalAlignment="Center"/>
         </StackPanel>
-        
+
         <StackPanel Grid.Row="1" 
                     Background="Black">
 
@@ -141,8 +145,8 @@
                 <Button Content="{StaticResource SchoolSetuplbl}" 
                         FontSize="16" 
                         VerticalContentAlignment="Center" 
-                        Grid.ColumnSpan="2"
-                        Command="{Binding SchoolSetupCommand}"/>
+                        Grid.ColumnSpan="2" 
+                        Click="DisplaySchoolInfoView"/>
             </Grid>
 
             <!--School Year-->
@@ -158,8 +162,8 @@
                 <Button Content="{StaticResource SchoolYearlbl}" 
                         FontSize="16" 
                         VerticalContentAlignment="Center" 
-                        Grid.ColumnSpan="2"
-                        Command="{Binding SchoolYearCommand}"/>
+                        Grid.ColumnSpan="2" 
+                        Click="DisplaySchoolYearView"/>
             </Grid>
 
             <!--Buildings / Rooms-->
@@ -175,8 +179,8 @@
                 <Button Content="{StaticResource BuildingRoomslbl}"
                         FontSize="16" 
                         VerticalContentAlignment="Center" 
-                        Grid.ColumnSpan="2"
-                        Command="{Binding BuildingsSetupCommand}"/>
+                        Grid.ColumnSpan="2" 
+                        Click="DisplayBuildingRoomsView"/>
             </Grid>
 
             <!--Departments-->
@@ -193,7 +197,7 @@
                         FontSize="16" 
                         VerticalContentAlignment="Center" 
                         Grid.ColumnSpan="2"
-                        Command="{Binding DepartmentsSetupCommand}"/>
+                        Click="DisplayDepartmentsView"/>
             </Grid>
 
             <!--Majors / Minors-->
@@ -206,11 +210,11 @@
                        Height="25"
                        Margin="-17 0 10 0"  
                        Panel.ZIndex="1"/>
-                <Button Content="{StaticResource MajorMinorlbl}" 
+                <Button Content="{StaticResource Majorslbl}" 
                         FontSize="16" 
                         VerticalContentAlignment="Center" 
-                        Grid.ColumnSpan="2"
-                        Command="{Binding MajorMinorCommand}"/>
+                        Grid.ColumnSpan="2" 
+                        Click="DisplayMajorsView"/>
             </Grid>
 
             <!--Professors-->
@@ -227,7 +231,7 @@
                         Grid.ColumnSpan="2"
                         FontSize="16"
                         VerticalContentAlignment="Center"
-                        Command="{Binding ProfessorsCommand}"/>
+                        Click="DisplayProfessorsView"/>
             </Grid>
 
             <!--Courses-->
@@ -244,7 +248,7 @@
                         FontSize="16" 
                         Grid.ColumnSpan="2"
                         VerticalContentAlignment="Center"
-                        Command="{Binding CoursesCommand}"/>
+                        Click="DisplayCoursesView"/>
             </Grid>
 
             <!--Students-->
@@ -260,8 +264,8 @@
                 <Button Content="{StaticResource Studentslbl}"
                         Grid.ColumnSpan="2"
                         FontSize="16" 
-                        VerticalContentAlignment="Center"
-                        Command="{Binding StudentsCommand}"/>
+                        VerticalContentAlignment="Center" 
+                        Click="DisplayStudentsView"/>
             </Grid>
 
             <!--Events-->
@@ -277,15 +281,16 @@
                 <Button Content="{StaticResource Eventslbl}"
                         Grid.ColumnSpan="2"
                         FontSize="16" 
-                        VerticalContentAlignment="Center"
-                        Command="{Binding EventsCommand}"/>
+                        VerticalContentAlignment="Center" 
+                        Click="DisplayEventsView"/>
             </Grid>
 
         </StackPanel>
 
-        <ContentControl Content="{Binding SelectedViewModel}" 
-                        Grid.Column="1" 
-                        Grid.Row="1"/>
+        <Frame x:Name="Main" 
+               Grid.Row="1" 
+               Grid.Column="1"
+               NavigationUIVisibility="Hidden"/>
 
 
     </Grid>

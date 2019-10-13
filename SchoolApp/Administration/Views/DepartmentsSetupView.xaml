@@ -5,27 +5,68 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Administration.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="800" d:DesignWidth="900">
+    
     <Grid>
-
-        <TextBlock Text="{StaticResource Departmentslbl}" FontSize="26" Margin="0 10 0 0" FontWeight="Bold" HorizontalAlignment="Center"/>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="1.5*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="{StaticResource Departmentslbl}"
+                   FontSize="26" 
+                   Margin="0 10 0 0" 
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"/>
 
         <StackPanel Margin="30 100 30 20">
-            <TextBlock Text="{StaticResource DepartmentFieldlbl}" FontWeight="Bold" FontSize="16" Margin="0 0 0 8"/>
-            <TextBox Width="400" HorizontalAlignment="Left" FontSize="14"/>
+            <TextBlock Text="{StaticResource DepartmentFieldlbl}"
+                       FontWeight="Bold" 
+                       FontSize="16" 
+                       Margin="0 0 0 8"/>
+            <TextBox Width="400"
+                     HorizontalAlignment="Left"
+                     FontSize="14"/>
 
-            <TextBlock Text="{StaticResource DepartmentAbbrlbl}" FontWeight="Bold" FontSize="16" Margin="0 40 0 8"/>
-            <TextBox Width="200" HorizontalAlignment="Left" FontSize="14"/>
+            <TextBlock Text="{StaticResource DepartmentAbbrlbl}"
+                       FontWeight="Bold" 
+                       FontSize="16" 
+                       Margin="0 40 0 8"/>
+            <TextBox Width="200"
+                     HorizontalAlignment="Left" 
+                     FontSize="14"/>
+        </StackPanel>
 
-            <ListView Height="300" Width="400" HorizontalAlignment="Left" Margin="0 40 0 8">
+        <Grid Grid.Row="1"
+              Margin="30 0 0 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2.5*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <ListView Height="400" 
+                      Width="550" 
+                      HorizontalAlignment="Left" 
+                      VerticalAlignment="Top"
+                      Margin="0 0 0 8">
                 <ListViewItem Content="Temp List item"/>
             </ListView>
-        </StackPanel>
-
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Height="30" Width="80" Content="{StaticResource Addlbl}" FontSize="14" VerticalAlignment="Bottom" Margin="0 0 20 30"/>
-            <Button Height="30" Width="80" Content="{StaticResource Cancellbl}" FontSize="14" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0 0 30 30"/>
-        </StackPanel>
-
+        
+        
+            <StackPanel Grid.Column="1"
+                        Margin="0 0 70 0">
+                <Button Content="{StaticResource Addlbl}" 
+                        Height="30"
+                        Margin="0 0 0 20"/>
+                <Button Content="{StaticResource Editlbl}"
+                        Height="30"
+                        Margin="0 0 0 20"/>
+                <Button Content="{StaticResource Deletelbl}" 
+                        Height="30"
+                        Margin="0 0 0 20"/>
+                <Button Content="{StaticResource Cancellbl}" 
+                        Height="30"/>
+            </StackPanel>
+        </Grid>
+        
     </Grid>
 </UserControl>

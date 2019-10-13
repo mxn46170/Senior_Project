@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Administration.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,11 @@ namespace Administration.Views
         public StudentsView()
         {
             InitializeComponent();
+        }
+
+        private void DisplayAddEditStudentsView(object sender, RoutedEventArgs e)
+        {
+            StudentMain.Content = new AddEditStudentsViewModel();
         }
     }
 }

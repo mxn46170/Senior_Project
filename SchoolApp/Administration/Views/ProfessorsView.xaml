@@ -5,28 +5,101 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Administration.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="400" d:DesignWidth="300">
+             d:DesignHeight="800" d:DesignWidth="900">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="1.9*"/>
+        </Grid.RowDefinitions>
+        
+        <TextBlock Text="{StaticResource Professorslbl}"
+                   HorizontalAlignment="Center"
+                   FontSize="26" 
+                   FontWeight="Bold"
+                   Margin="0 10 0 0"
+                   Grid.ColumnSpan="2"/>
 
-        <TextBlock Text="{StaticResource Professorslbl}" HorizontalAlignment="Center" FontSize="26" FontWeight="Bold" Margin="0 10 0 0"/>
+        <StackPanel Margin="30 90 30 0">
+            <TextBlock Text="{StaticResource FirstName}" 
+                       FontWeight="Bold" 
+                       FontSize="16" 
+                       Margin="0 0 0 8"/>
+            <TextBox Width="300" 
+                     HorizontalAlignment="Left" 
+                     FontSize="14"/>
 
-        <StackPanel Margin="30 90 30 20">
-            <TextBlock Text="{StaticResource FirstName}" FontWeight="Bold" FontSize="16" Margin="0 0 0 8"/>
-            <TextBox Width="400" HorizontalAlignment="Left" FontSize="14"/>
-
-            <TextBlock Text="{StaticResource LastName}" FontWeight="Bold" FontSize="16" Margin="0 40 0 8"/>
-            <TextBox Width="400" HorizontalAlignment="Left" FontSize="14"/>
-
-            <TextBlock Text="{StaticResource Departmentlbl}" FontWeight="Bold" FontSize="16" Margin="0 40 0 8"/>
-            <ComboBox Width="150" HorizontalAlignment="Left" FontSize="14"/>
-
-            <ListView Height="300" Width="400" HorizontalAlignment="Left" Margin="0 40 0 8">
-                <ListViewItem Content="Temp List item"/>
-            </ListView>
+            <TextBlock Text="{StaticResource LastName}" 
+                       FontWeight="Bold" 
+                       FontSize="16"
+                       Margin="0 40 0 8"/>
+            <TextBox Width="300" 
+                     HorizontalAlignment="Left"
+                     FontSize="14"/>
+        </StackPanel>
+        
+        <StackPanel Grid.Column="1"
+                     Margin="30 50 30 0">
+            <TextBlock Text="{StaticResource Departmentlbl}"
+                       FontWeight="Bold"
+                       FontSize="16" 
+                       Margin="0 40 0 8"/>
+            <ComboBox Width="150" 
+                      HorizontalAlignment="Left" 
+                      FontSize="14"/>
+            <TextBlock Text="{StaticResource PhoneNumberlbl}"
+                       FontWeight="Bold"
+                       FontSize="16" 
+                       Margin="0 40 0 8"/>
+            <TextBox Width="150" 
+                      HorizontalAlignment="Left" 
+                      FontSize="14"/>
         </StackPanel>
 
-        <Button Height="30" Width="80" Content="{StaticResource Cancellbl}" FontSize="14" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0 0 30 30"/>
-        <Button Height="30" Width="80" Content="{StaticResource Addlbl}" FontSize="14" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0 0 130 30"/>
+        <Grid Grid.Row="1"
+              Grid.ColumnSpan="2"
+              Margin="30">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <ListView Height="450" 
+                      Width="580" 
+                      HorizontalAlignment="Left"
+                      VerticalAlignment="Top">
+                <ListViewItem Content="Temp List item"/>
+            </ListView>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="1">
+                    <Button Content="{StaticResource Addlbl}"
+                            Margin="0 0 0 20"
+                            Height="30"
+                            Width="150"/>
+                    <Button Content="{StaticResource Editlbl}"
+                            Margin="0 0 0 20"
+                            Height="30"
+                            Width="150"/>
+                    <Button Content="{StaticResource Deletelbl}"
+                            Margin="0 0 0 20"
+                            Height="30"
+                            Width="150"/>
+                    <Button Content="{StaticResource Cancellbl}"
+                            Margin="0 0 0 20"
+                            Height="30"
+                            Width="150"/>
+                </StackPanel>
+                
+            </Grid>
+        </Grid>
+        
 
     </Grid>
 </UserControl>
