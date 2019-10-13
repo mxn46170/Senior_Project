@@ -22,18 +22,22 @@ namespace SchoolApp_Professor
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly NavigationViewModel nav = new NavigationViewModel();
+        private readonly MainWindowViewModel mvm = new MainWindowViewModel();
         public MainWindow()
         {
             Thread.Sleep(1500);
             InitializeComponent();
-            DataContext = nav;
+            DataContext = mvm;
+        }
+
+        private void Logout(object sender, RoutedEventArgs e)
+        {
+            mvm.LogOut();
         }
 
         private void ShutDown(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
-            //check if the current screen has any unsaved data -> output message to save or not?
+            mvm.ExitApp();
         }
 
         private void OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -41,6 +45,16 @@ namespace SchoolApp_Professor
             base.OnMouseLeftButtonDown(e);
             // Begin dragging the window
             DragMove();
+        }
+
+        private void DisplaySettingsView(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new SettingsViewModel();
+        }
+
+        private void DisplayEmailVIew(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new EmailViewModel();
         }
 
     }

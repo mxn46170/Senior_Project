@@ -8,8 +8,8 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width=".5*"/>
             <ColumnDefinition/>
+            <ColumnDefinition Width="4*"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
@@ -25,9 +25,12 @@
                    Margin="0 10 0 0"/>
 
         <StackPanel Grid.Row="1" Margin="0 40 0 0">
-            <Button Content="{StaticResource AllUserslbl}" Margin="10 10 50 0" />
-            <Button Content="{StaticResource AllStudentlbl}" Margin="10 70 50 0" />
-            <Button Content="{StaticResource SelectUserslbl}" Margin="10 70 50 0"/>
+            <Button Content="{StaticResource AllUserslbl}" 
+                    Margin="10 10 5 0" />
+            <Button Content="{StaticResource AllStudentlbl}" 
+                    Margin="10 70 5 0" />
+            <Button Content="{StaticResource SelectUserslbl}" 
+                    Margin="10 70 5 0"/>
         </StackPanel>
 
     </Grid>
