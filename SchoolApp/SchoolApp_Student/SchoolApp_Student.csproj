@@ -48,6 +48,9 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="UserLogin">
+      <HintPath>..\..\..\New Commits Test\SchoolApp\UserLogin\bin\Debug\UserLogin.exe</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -161,9 +164,6 @@
     <Resource Include="Images\Icons\Grades.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Icons\Home.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\Icons\Homework.png" />
   </ItemGroup>
   <ItemGroup>
@@ -188,13 +188,7 @@
     <Resource Include="Images\Icons\Search_2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Icons\Settings.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\Icons\Settings_2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Icons\Shutdown.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Icons\Student.png" />
@@ -221,6 +215,12 @@
   </ItemGroup>
   <ItemGroup>
     <SplashScreen Include="Images\SchoolU_Splash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icons\Home.ico" />
+    <Resource Include="Images\Icons\Logout.ico" />
+    <Resource Include="Images\Icons\Settings.ico" />
+    <Resource Include="Images\Icons\Shutdown.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
