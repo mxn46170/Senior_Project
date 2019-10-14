@@ -46,6 +46,9 @@
         <DataTemplate DataType="{x:Type ViewModels:AddEditStudentsViewModel}">
             <controls:AddEditStudentsView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type ViewModels:StudentSearchViewModel}">
+            <controls:StudentSearchView/>
+        </DataTemplate>
     </Window.Resources>
 
     <Grid>
