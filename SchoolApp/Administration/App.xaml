@@ -70,6 +70,12 @@
             <sys:String x:Key="SchoolWideEventlbl">School Wide Event</sys:String>
             <sys:String x:Key="ToDepartmentlbl">To Department</sys:String>
             <sys:String x:Key="PhoneNumberlbl">Phone Number</sys:String>
+            <sys:String x:Key="StudentSearchlbl">Student Search</sys:String>
+            <sys:String x:Key="NumStudentslbl">Number of Students:</sys:String>
+            <sys:String x:Key="FirstNamelbl">First Name</sys:String>
+            <sys:String x:Key="LastNamelbl">Last Name</sys:String>
+            <sys:String x:Key="StudentYearlbl">Student Year</sys:String>
+            <sys:String x:Key="ClearFiltersbtn">Clear Filters</sys:String>
 
             <!--Hard-coded Image locations-->
             <BitmapImage x:Key="HomeIcon" UriSource="..\Images\Icons\Home.ico"/>
