@@ -30,5 +30,10 @@ namespace Administration.Views
         {
             StudentMain.Content = new AddEditStudentsViewModel();
         }
+
+        private void DisplayStudentSearchView(object sender, RoutedEventArgs e)
+        {
+            StudentMain.Content = new StudentSearchViewModel();
+        }
     }
 }

@@ -49,7 +49,8 @@
             <Button Height="30"
                     Width="120"
                     Content="{StaticResource Searchbtn}"
-                    FontSize="14"/>
+                    FontSize="14" 
+                    Click="DisplayStudentSearchView"/>
         </StackPanel>
 
         <Frame x:Name="StudentMain" 
