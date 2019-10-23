@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SchoolU_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="SchoolU_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Admin">
           <Key>
             <PropertyRef Name="AdminId" />
@@ -18,7 +18,7 @@
             <PropertyRef Name="BuildingId" />
           </Key>
           <Property Name="BuildingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="BuildingName" Type="varbinary" MaxLength="50" Nullable="false" />
+          <Property Name="BuildingName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="BuildingAbbreviation" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="Status" Type="char" MaxLength="1" Nullable="false" />
         </EntityType>
@@ -89,6 +89,7 @@
           </Key>
           <Property Name="DepartmentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DepartmentName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DepartmentAbbr" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Events">
           <Key>
@@ -109,6 +110,7 @@
           </Key>
           <Property Name="MajorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MajorDescription" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Status" Type="char" MaxLength="1" Nullable="false" />
         </EntityType>
         <EntityType Name="Professor">
           <Key>
@@ -119,7 +121,6 @@
           <Property Name="ProfessorLastName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ProfessorUserName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ProfessorPassword" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="ProfessorSalary" Type="decimal" Precision="8" Scale="2" Nullable="false" />
           <Property Name="ProfessorPhoneNumber" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="ProfessorEmail" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="DepartmentId" Type="int" Nullable="false" />
@@ -161,8 +162,8 @@
           <Property Name="StudentFirstName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="StudentLastName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="StudentUserName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="StudentEmail" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="StudentPassword" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="StudentEmail" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="StudentYearId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="StudentClasses">
@@ -638,8 +639,7 @@
             <End Role="StudentMinor" EntitySet="StudentMinor" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SchoolU_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -651,16 +651,6 @@
           <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
-        <EntityType Name="Building">
-          <Key>
-            <PropertyRef Name="BuildingId" />
-          </Key>
-          <Property Name="BuildingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="BuildingName" Type="Binary" MaxLength="50" FixedLength="false" Nullable="false" />
-          <Property Name="BuildingAbbreviation" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="BuildingRooms" Relationship="Self.FK_BuildingRooms_BuildingId" FromRole="Building" ToRole="BuildingRooms" />
-        </EntityType>
         <EntityType Name="BuildingRoom">
           <Key>
             <PropertyRef Name="BuildingRoomId" />
@@ -669,8 +659,8 @@
           <Property Name="BuildingId" Type="Int32" Nullable="false" />
           <Property Name="RoomNumber" Type="Int16" Nullable="false" />
           <Property Name="Status__" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Building" Relationship="Self.FK_BuildingRooms_BuildingId" FromRole="BuildingRooms" ToRole="Building" />
           <NavigationProperty Name="Classes" Relationship="Self.FK_Class_BuildingRoomId" FromRole="BuildingRooms" ToRole="Class" />
+          <NavigationProperty Name="Building" Relationship="SchoolU_DBModel.FK_BuildingRooms_BuildingId" FromRole="BuildingRoom" ToRole="Building" />
         </EntityType>
         <EntityType Name="Class">
           <Key>
@@ -688,13 +678,13 @@
           <Property Name="ClassLocationId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="BuildingRoom" Relationship="Self.FK_Class_BuildingRoomId" FromRole="Class" ToRole="BuildingRooms" />
           <NavigationProperty Name="Course" Relationship="Self.FK_Class_CourseId" FromRole="Class" ToRole="Course" />
-          <NavigationProperty Name="Professor" Relationship="Self.FK_Class_ProfessorId" FromRole="Class" ToRole="Professor" />
           <NavigationProperty Name="Semester" Relationship="Self.FK_Class_SemesterId" FromRole="Class" ToRole="Semester" />
           <NavigationProperty Name="ClassAnnouncements" Relationship="Self.FK_ClassAnnouncements_ClassId" FromRole="Class" ToRole="ClassAnnouncements" />
           <NavigationProperty Name="ClassAssignments" Relationship="Self.FK_ClassAssignments_ClassId" FromRole="Class" ToRole="ClassAssignments" />
           <NavigationProperty Name="ClassAttendances" Relationship="Self.FK_ClassAttendance_ClassId" FromRole="Class" ToRole="ClassAttendance" />
           <NavigationProperty Name="Course1" Relationship="Self.FK_Course_PrerequisiteCourse" FromRole="Class" ToRole="Course" />
           <NavigationProperty Name="StudentClasses" Relationship="Self.FK_StudentClasses_ClassId" FromRole="Class" ToRole="StudentClasses" />
+          <NavigationProperty Name="Professor" Relationship="SchoolU_DBModel.FK_Class_ProfessorId" FromRole="Class" ToRole="Professor" />
         </EntityType>
         <EntityType Name="ClassAnnouncement">
           <Key>
@@ -727,7 +717,7 @@
           <Property Name="ClassDay" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="IsPresent" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Class" Relationship="Self.FK_ClassAttendance_ClassId" FromRole="ClassAttendance" ToRole="Class" />
-          <NavigationProperty Name="Student" Relationship="Self.FK_ClassAttendance_StudentId" FromRole="ClassAttendance" ToRole="Student" />
+          <NavigationProperty Name="Student" Relationship="SchoolU_DBModel.FK_ClassAttendance_StudentId" FromRole="ClassAttendance" ToRole="Student" />
         </EntityType>
         <EntityType Name="Course">
           <Key>
@@ -748,7 +738,8 @@
           <Property Name="DepartmentName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Courses" Relationship="Self.FK_Course_DepartmentId" FromRole="Department" ToRole="Course" />
           <NavigationProperty Name="Events" Relationship="Self.FK_Events_InterestedDeparmentId" FromRole="Department" ToRole="Events" />
-          <NavigationProperty Name="Professors" Relationship="Self.FK_Professor_DepartmentId" FromRole="Department" ToRole="Professor" />
+          <Property Name="DepartmentAbbr" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Professors" Relationship="SchoolU_DBModel.FK_Professor_DepartmentId" FromRole="Department" ToRole="Professor" />
         </EntityType>
         <EntityType Name="Event">
           <Key>
@@ -772,22 +763,7 @@
           <Property Name="MajorDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="StudentMajors" Relationship="Self.FK_StudentMajor_MajorId" FromRole="Major" ToRole="StudentMajor" />
           <NavigationProperty Name="StudentMinors" Relationship="Self.FK_StudentMinor_MinorId" FromRole="Major" ToRole="StudentMinor" />
-        </EntityType>
-        <EntityType Name="Professor">
-          <Key>
-            <PropertyRef Name="ProfessorId" />
-          </Key>
-          <Property Name="ProfessorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ProfessorFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ProfessorLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ProfessorUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ProfessorPassword" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ProfessorSalary" Type="Decimal" Precision="8" Scale="2" Nullable="false" />
-          <Property Name="ProfessorPhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ProfessorEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="DepartmentId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Classes" Relationship="Self.FK_Class_ProfessorId" FromRole="Professor" ToRole="Class" />
-          <NavigationProperty Name="Department" Relationship="Self.FK_Professor_DepartmentId" FromRole="Professor" ToRole="Department" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
         </EntityType>
         <EntityType Name="SchoolInfo">
           <Key>
@@ -821,25 +797,6 @@
           <NavigationProperty Name="Classes" Relationship="Self.FK_Class_SemesterId" FromRole="Semester" ToRole="Class" />
           <NavigationProperty Name="SchoolYear" Relationship="Self.FK_Semester_SchoolYearId" FromRole="Semester" ToRole="SchoolYear" />
         </EntityType>
-        <EntityType Name="Student">
-          <Key>
-            <PropertyRef Name="StudentId" />
-          </Key>
-          <Property Name="StudentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="StudentFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="StudentLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="StudentUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="StudentEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="StudentPassword" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="StudentYearId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="ClassAttendances" Relationship="Self.FK_ClassAttendance_StudentId" FromRole="Student" ToRole="ClassAttendance" />
-          <NavigationProperty Name="StudentYear" Relationship="Self.FK_Student_StudentYearId" FromRole="Student" ToRole="StudentYear" />
-          <NavigationProperty Name="StudentClasses" Relationship="Self.FK_StudentClasses_StudentId" FromRole="Student" ToRole="StudentClasses" />
-          <NavigationProperty Name="StudentClassGrades" Relationship="Self.FK_StudentClassGrades_StudentId" FromRole="Student" ToRole="StudentClassGrades" />
-          <NavigationProperty Name="StudentFinalGrades" Relationship="Self.FK_StudentFinalGrades_StudentId" FromRole="Student" ToRole="StudentFinalGrades" />
-          <NavigationProperty Name="StudentMajors" Relationship="Self.FK_StudentMajor_StudentId" FromRole="Student" ToRole="StudentMajor" />
-          <NavigationProperty Name="StudentMinors" Relationship="Self.FK_StudentMinor_StudentId" FromRole="Student" ToRole="StudentMinor" />
-        </EntityType>
         <EntityType Name="StudentClass">
           <Key>
             <PropertyRef Name="StudentClassesId" />
@@ -848,9 +805,9 @@
           <Property Name="ClassId" Type="Int32" Nullable="false" />
           <Property Name="StudentId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Class" Relationship="Self.FK_StudentClasses_ClassId" FromRole="StudentClasses" ToRole="Class" />
-          <NavigationProperty Name="Student" Relationship="Self.FK_StudentClasses_StudentId" FromRole="StudentClasses" ToRole="Student" />
           <NavigationProperty Name="StudentClassGrades" Relationship="Self.FK_StudentClassGrades_ClassId" FromRole="StudentClasses" ToRole="StudentClassGrades" />
           <NavigationProperty Name="StudentFinalGrades" Relationship="Self.FK_StudentFinalGrades_ClassId" FromRole="StudentClasses" ToRole="StudentFinalGrades" />
+          <NavigationProperty Name="Student" Relationship="SchoolU_DBModel.FK_StudentClasses_StudentId" FromRole="StudentClass" ToRole="Student" />
         </EntityType>
         <EntityType Name="StudentClassGrade">
           <Key>
@@ -860,8 +817,8 @@
           <Property Name="StudentId" Type="Int32" Nullable="false" />
           <Property Name="StudentClassesId" Type="Int32" Nullable="false" />
           <Property Name="PointsEarned" Type="Int16" Nullable="false" />
-          <NavigationProperty Name="Student" Relationship="Self.FK_StudentClassGrades_StudentId" FromRole="StudentClassGrades" ToRole="Student" />
           <NavigationProperty Name="StudentClass" Relationship="Self.FK_StudentClassGrades_ClassId" FromRole="StudentClassGrades" ToRole="StudentClasses" />
+          <NavigationProperty Name="Student" Relationship="SchoolU_DBModel.FK_StudentClassGrades_StudentId" FromRole="StudentClassGrade" ToRole="Student" />
         </EntityType>
         <EntityType Name="StudentFinalGrade">
           <Key>
@@ -871,8 +828,8 @@
           <Property Name="StudentId" Type="Int32" Nullable="false" />
           <Property Name="StudentClassesId" Type="Int32" Nullable="false" />
           <Property Name="StudentLetterGrade" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Student" Relationship="Self.FK_StudentFinalGrades_StudentId" FromRole="StudentFinalGrades" ToRole="Student" />
           <NavigationProperty Name="StudentClass" Relationship="Self.FK_StudentFinalGrades_ClassId" FromRole="StudentFinalGrades" ToRole="StudentClasses" />
+          <NavigationProperty Name="Student" Relationship="SchoolU_DBModel.FK_StudentFinalGrades_StudentId" FromRole="StudentFinalGrade" ToRole="Student" />
         </EntityType>
         <EntityType Name="StudentMajor">
           <Key>
@@ -882,7 +839,7 @@
           <Property Name="StudentId" Type="Int32" Nullable="false" />
           <Property Name="MajorId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Major" Relationship="Self.FK_StudentMajor_MajorId" FromRole="StudentMajor" ToRole="Major" />
-          <NavigationProperty Name="Student" Relationship="Self.FK_StudentMajor_StudentId" FromRole="StudentMajor" ToRole="Student" />
+          <NavigationProperty Name="Student" Relationship="SchoolU_DBModel.FK_StudentMajor_StudentId" FromRole="StudentMajor" ToRole="Student" />
         </EntityType>
         <EntityType Name="StudentMinor">
           <Key>
@@ -892,7 +849,7 @@
           <Property Name="StudentId" Type="Int32" Nullable="false" />
           <Property Name="MinorId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Major" Relationship="Self.FK_StudentMinor_MinorId" FromRole="StudentMinor" ToRole="Major" />
-          <NavigationProperty Name="Student" Relationship="Self.FK_StudentMinor_StudentId" FromRole="StudentMinor" ToRole="Student" />
+          <NavigationProperty Name="Student" Relationship="SchoolU_DBModel.FK_StudentMinor_StudentId" FromRole="StudentMinor" ToRole="Student" />
         </EntityType>
         <EntityType Name="StudentYear">
           <Key>
@@ -900,20 +857,8 @@
           </Key>
           <Property Name="StudentYearId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="StudentYearDescription" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Students" Relationship="Self.FK_Student_StudentYearId" FromRole="StudentYear" ToRole="Student" />
+          <NavigationProperty Name="Students" Relationship="SchoolU_DBModel.FK_Student_StudentYearId" FromRole="StudentYear" ToRole="Student" />
         </EntityType>
-        <Association Name="FK_BuildingRooms_BuildingId">
-          <End Role="Building" Type="Self.Building" Multiplicity="1" />
-          <End Role="BuildingRooms" Type="Self.BuildingRoom" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Building">
-              <PropertyRef Name="BuildingId" />
-            </Principal>
-            <Dependent Role="BuildingRooms">
-              <PropertyRef Name="BuildingId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Class_BuildingRoomId">
           <End Role="BuildingRooms" Type="Self.BuildingRoom" Multiplicity="1" />
           <End Role="Class" Type="Self.Class" Multiplicity="*" />
@@ -935,18 +880,6 @@
             </Principal>
             <Dependent Role="Class">
               <PropertyRef Name="CourseId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Class_ProfessorId">
-          <End Role="Professor" Type="Self.Professor" Multiplicity="1" />
-          <End Role="Class" Type="Self.Class" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Professor">
-              <PropertyRef Name="ProfessorId" />
-            </Principal>
-            <Dependent Role="Class">
-              <PropertyRef Name="ClassProfessorId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1022,18 +955,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ClassAttendance_StudentId">
-          <End Role="Student" Type="Self.Student" Multiplicity="1" />
-          <End Role="ClassAttendance" Type="Self.ClassAttendance" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Student">
-              <PropertyRef Name="StudentId" />
-            </Principal>
-            <Dependent Role="ClassAttendance">
-              <PropertyRef Name="StudentId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Course_DepartmentId">
           <End Role="Department" Type="Self.Department" Multiplicity="1" />
           <End Role="Course" Type="Self.Course" Multiplicity="*" />
@@ -1055,18 +976,6 @@
             </Principal>
             <Dependent Role="Events">
               <PropertyRef Name="IntrestedDepartment" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Professor_DepartmentId">
-          <End Role="Department" Type="Self.Department" Multiplicity="1" />
-          <End Role="Professor" Type="Self.Professor" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Department">
-              <PropertyRef Name="DepartmentId" />
-            </Principal>
-            <Dependent Role="Professor">
-              <PropertyRef Name="DepartmentId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1106,78 +1015,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Student_StudentYearId">
-          <End Role="StudentYear" Type="Self.StudentYear" Multiplicity="1" />
-          <End Role="Student" Type="Self.Student" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="StudentYear">
-              <PropertyRef Name="StudentYearId" />
-            </Principal>
-            <Dependent Role="Student">
-              <PropertyRef Name="StudentYearId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_StudentClasses_StudentId">
-          <End Role="Student" Type="Self.Student" Multiplicity="1" />
-          <End Role="StudentClasses" Type="Self.StudentClass" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Student">
-              <PropertyRef Name="StudentId" />
-            </Principal>
-            <Dependent Role="StudentClasses">
-              <PropertyRef Name="StudentId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_StudentClassGrades_StudentId">
-          <End Role="Student" Type="Self.Student" Multiplicity="1" />
-          <End Role="StudentClassGrades" Type="Self.StudentClassGrade" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Student">
-              <PropertyRef Name="StudentId" />
-            </Principal>
-            <Dependent Role="StudentClassGrades">
-              <PropertyRef Name="StudentId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_StudentFinalGrades_StudentId">
-          <End Role="Student" Type="Self.Student" Multiplicity="1" />
-          <End Role="StudentFinalGrades" Type="Self.StudentFinalGrade" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Student">
-              <PropertyRef Name="StudentId" />
-            </Principal>
-            <Dependent Role="StudentFinalGrades">
-              <PropertyRef Name="StudentId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_StudentMajor_StudentId">
-          <End Role="Student" Type="Self.Student" Multiplicity="1" />
-          <End Role="StudentMajor" Type="Self.StudentMajor" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Student">
-              <PropertyRef Name="StudentId" />
-            </Principal>
-            <Dependent Role="StudentMajor">
-              <PropertyRef Name="StudentId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_StudentMinor_StudentId">
-          <End Role="Student" Type="Self.Student" Multiplicity="1" />
-          <End Role="StudentMinor" Type="Self.StudentMinor" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Student">
-              <PropertyRef Name="StudentId" />
-            </Principal>
-            <Dependent Role="StudentMinor">
-              <PropertyRef Name="StudentId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_StudentClassGrades_ClassId">
           <End Role="StudentClasses" Type="Self.StudentClass" Multiplicity="1" />
           <End Role="StudentClassGrades" Type="Self.StudentClassGrade" Multiplicity="*" />
@@ -1204,7 +1041,6 @@
         </Association>
         <EntityContainer Name="SchoolU_DBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Admins" EntityType="Self.Admin" />
-          <EntitySet Name="Buildings" EntityType="Self.Building" />
           <EntitySet Name="BuildingRooms" EntityType="Self.BuildingRoom" />
           <EntitySet Name="Classes" EntityType="Self.Class" />
           <EntitySet Name="ClassAnnouncements" EntityType="Self.ClassAnnouncement" />
@@ -1214,31 +1050,21 @@
           <EntitySet Name="Departments" EntityType="Self.Department" />
           <EntitySet Name="Events" EntityType="Self.Event" />
           <EntitySet Name="Majors" EntityType="Self.Major" />
-          <EntitySet Name="Professors" EntityType="Self.Professor" />
           <EntitySet Name="SchoolInfoes" EntityType="Self.SchoolInfo" />
           <EntitySet Name="SchoolYears" EntityType="Self.SchoolYear" />
           <EntitySet Name="Semesters" EntityType="Self.Semester" />
-          <EntitySet Name="Students" EntityType="Self.Student" />
           <EntitySet Name="StudentClasses" EntityType="Self.StudentClass" />
           <EntitySet Name="StudentClassGrades" EntityType="Self.StudentClassGrade" />
           <EntitySet Name="StudentFinalGrades" EntityType="Self.StudentFinalGrade" />
           <EntitySet Name="StudentMajors" EntityType="Self.StudentMajor" />
           <EntitySet Name="StudentMinors" EntityType="Self.StudentMinor" />
           <EntitySet Name="StudentYears" EntityType="Self.StudentYear" />
-          <AssociationSet Name="FK_BuildingRooms_BuildingId" Association="Self.FK_BuildingRooms_BuildingId">
-            <End Role="Building" EntitySet="Buildings" />
-            <End Role="BuildingRooms" EntitySet="BuildingRooms" />
-          </AssociationSet>
           <AssociationSet Name="FK_Class_BuildingRoomId" Association="Self.FK_Class_BuildingRoomId">
             <End Role="BuildingRooms" EntitySet="BuildingRooms" />
             <End Role="Class" EntitySet="Classes" />
           </AssociationSet>
           <AssociationSet Name="FK_Class_CourseId" Association="Self.FK_Class_CourseId">
             <End Role="Course" EntitySet="Courses" />
-            <End Role="Class" EntitySet="Classes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Class_ProfessorId" Association="Self.FK_Class_ProfessorId">
-            <End Role="Professor" EntitySet="Professors" />
             <End Role="Class" EntitySet="Classes" />
           </AssociationSet>
           <AssociationSet Name="FK_Class_SemesterId" Association="Self.FK_Class_SemesterId">
@@ -1265,10 +1091,6 @@
             <End Role="Class" EntitySet="Classes" />
             <End Role="StudentClasses" EntitySet="StudentClasses" />
           </AssociationSet>
-          <AssociationSet Name="FK_ClassAttendance_StudentId" Association="Self.FK_ClassAttendance_StudentId">
-            <End Role="Student" EntitySet="Students" />
-            <End Role="ClassAttendance" EntitySet="ClassAttendances" />
-          </AssociationSet>
           <AssociationSet Name="FK_Course_DepartmentId" Association="Self.FK_Course_DepartmentId">
             <End Role="Department" EntitySet="Departments" />
             <End Role="Course" EntitySet="Courses" />
@@ -1276,10 +1098,6 @@
           <AssociationSet Name="FK_Events_InterestedDeparmentId" Association="Self.FK_Events_InterestedDeparmentId">
             <End Role="Department" EntitySet="Departments" />
             <End Role="Events" EntitySet="Events" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Professor_DepartmentId" Association="Self.FK_Professor_DepartmentId">
-            <End Role="Department" EntitySet="Departments" />
-            <End Role="Professor" EntitySet="Professors" />
           </AssociationSet>
           <AssociationSet Name="FK_StudentMajor_MajorId" Association="Self.FK_StudentMajor_MajorId">
             <End Role="Major" EntitySet="Majors" />
@@ -1293,30 +1111,6 @@
             <End Role="SchoolYear" EntitySet="SchoolYears" />
             <End Role="Semester" EntitySet="Semesters" />
           </AssociationSet>
-          <AssociationSet Name="FK_Student_StudentYearId" Association="Self.FK_Student_StudentYearId">
-            <End Role="StudentYear" EntitySet="StudentYears" />
-            <End Role="Student" EntitySet="Students" />
-          </AssociationSet>
-          <AssociationSet Name="FK_StudentClasses_StudentId" Association="Self.FK_StudentClasses_StudentId">
-            <End Role="Student" EntitySet="Students" />
-            <End Role="StudentClasses" EntitySet="StudentClasses" />
-          </AssociationSet>
-          <AssociationSet Name="FK_StudentClassGrades_StudentId" Association="Self.FK_StudentClassGrades_StudentId">
-            <End Role="Student" EntitySet="Students" />
-            <End Role="StudentClassGrades" EntitySet="StudentClassGrades" />
-          </AssociationSet>
-          <AssociationSet Name="FK_StudentFinalGrades_StudentId" Association="Self.FK_StudentFinalGrades_StudentId">
-            <End Role="Student" EntitySet="Students" />
-            <End Role="StudentFinalGrades" EntitySet="StudentFinalGrades" />
-          </AssociationSet>
-          <AssociationSet Name="FK_StudentMajor_StudentId" Association="Self.FK_StudentMajor_StudentId">
-            <End Role="Student" EntitySet="Students" />
-            <End Role="StudentMajor" EntitySet="StudentMajors" />
-          </AssociationSet>
-          <AssociationSet Name="FK_StudentMinor_StudentId" Association="Self.FK_StudentMinor_StudentId">
-            <End Role="Student" EntitySet="Students" />
-            <End Role="StudentMinor" EntitySet="StudentMinors" />
-          </AssociationSet>
           <AssociationSet Name="FK_StudentClassGrades_ClassId" Association="Self.FK_StudentClassGrades_ClassId">
             <End Role="StudentClasses" EntitySet="StudentClasses" />
             <End Role="StudentClassGrades" EntitySet="StudentClassGrades" />
@@ -1325,7 +1119,214 @@
             <End Role="StudentClasses" EntitySet="StudentClasses" />
             <End Role="StudentFinalGrades" EntitySet="StudentFinalGrades" />
           </AssociationSet>
+          <EntitySet Name="Buildings" EntityType="SchoolU_DBModel.Building" />
+          <EntitySet Name="Professors" EntityType="SchoolU_DBModel.Professor" />
+          <AssociationSet Name="FK_BuildingRooms_BuildingId" Association="SchoolU_DBModel.FK_BuildingRooms_BuildingId">
+            <End Role="Building" EntitySet="Buildings" />
+            <End Role="BuildingRoom" EntitySet="BuildingRooms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Class_ProfessorId" Association="SchoolU_DBModel.FK_Class_ProfessorId">
+            <End Role="Professor" EntitySet="Professors" />
+            <End Role="Class" EntitySet="Classes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Professor_DepartmentId" Association="SchoolU_DBModel.FK_Professor_DepartmentId">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="Professor" EntitySet="Professors" />
+          </AssociationSet>
+          <EntitySet Name="Students" EntityType="SchoolU_DBModel.Student" />
+          <AssociationSet Name="FK_ClassAttendance_StudentId" Association="SchoolU_DBModel.FK_ClassAttendance_StudentId">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="ClassAttendance" EntitySet="ClassAttendances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_StudentYearId" Association="SchoolU_DBModel.FK_Student_StudentYearId">
+            <End Role="StudentYear" EntitySet="StudentYears" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentClasses_StudentId" Association="SchoolU_DBModel.FK_StudentClasses_StudentId">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="StudentClass" EntitySet="StudentClasses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentClassGrades_StudentId" Association="SchoolU_DBModel.FK_StudentClassGrades_StudentId">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="StudentClassGrade" EntitySet="StudentClassGrades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentFinalGrades_StudentId" Association="SchoolU_DBModel.FK_StudentFinalGrades_StudentId">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="StudentFinalGrade" EntitySet="StudentFinalGrades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentMajor_StudentId" Association="SchoolU_DBModel.FK_StudentMajor_StudentId">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="StudentMajor" EntitySet="StudentMajors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentMinor_StudentId" Association="SchoolU_DBModel.FK_StudentMinor_StudentId">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="StudentMinor" EntitySet="StudentMinors" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Building">
+          <Key>
+            <PropertyRef Name="BuildingId" />
+          </Key>
+          <Property Name="BuildingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BuildingName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BuildingAbbreviation" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="BuildingRooms" Relationship="SchoolU_DBModel.FK_BuildingRooms_BuildingId" FromRole="Building" ToRole="BuildingRoom" />
+        </EntityType>
+        <EntityType Name="Professor">
+          <Key>
+            <PropertyRef Name="ProfessorId" />
+          </Key>
+          <Property Name="ProfessorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProfessorFirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProfessorLastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProfessorUserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ProfessorPassword" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ProfessorPhoneNumber" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ProfessorEmail" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DepartmentId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Classes" Relationship="SchoolU_DBModel.FK_Class_ProfessorId" FromRole="Professor" ToRole="Class" />
+          <NavigationProperty Name="Department" Relationship="SchoolU_DBModel.FK_Professor_DepartmentId" FromRole="Professor" ToRole="Department" />
+        </EntityType>
+        <Association Name="FK_BuildingRooms_BuildingId">
+          <End Type="SchoolU_DBModel.Building" Role="Building" Multiplicity="1" />
+          <End Type="SchoolU_DBModel.BuildingRoom" Role="BuildingRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Building">
+              <PropertyRef Name="BuildingId" />
+            </Principal>
+            <Dependent Role="BuildingRoom">
+              <PropertyRef Name="BuildingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Class_ProfessorId">
+          <End Type="SchoolU_DBModel.Professor" Role="Professor" Multiplicity="1" />
+          <End Type="SchoolU_DBModel.Class" Role="Class" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Professor">
+              <PropertyRef Name="ProfessorId" />
+            </Principal>
+            <Dependent Role="Class">
+              <PropertyRef Name="ClassProfessorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Professor_DepartmentId">
+          <End Type="SchoolU_DBModel.Department" Role="Department" Multiplicity="1" />
+          <End Type="SchoolU_DBModel.Professor" Role="Professor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="DepartmentId" />
+            </Principal>
+            <Dependent Role="Professor">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="StudentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentFirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StudentLastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StudentUserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StudentPassword" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="StudentEmail" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StudentYearId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ClassAttendances" Relationship="SchoolU_DBModel.FK_ClassAttendance_StudentId" FromRole="Student" ToRole="ClassAttendance" />
+          <NavigationProperty Name="StudentYear" Relationship="SchoolU_DBModel.FK_Student_StudentYearId" FromRole="Student" ToRole="StudentYear" />
+          <NavigationProperty Name="StudentClasses" Relationship="SchoolU_DBModel.FK_StudentClasses_StudentId" FromRole="Student" ToRole="StudentClass" />
+          <NavigationProperty Name="StudentClassGrades" Relationship="SchoolU_DBModel.FK_StudentClassGrades_StudentId" FromRole="Student" ToRole="StudentClassGrade" />
+          <NavigationProperty Name="StudentFinalGrades" Relationship="SchoolU_DBModel.FK_StudentFinalGrades_StudentId" FromRole="Student" ToRole="StudentFinalGrade" />
+          <NavigationProperty Name="StudentMajors" Relationship="SchoolU_DBModel.FK_StudentMajor_StudentId" FromRole="Student" ToRole="StudentMajor" />
+          <NavigationProperty Name="StudentMinors" Relationship="SchoolU_DBModel.FK_StudentMinor_StudentId" FromRole="Student" ToRole="StudentMinor" />
+        </EntityType>
+        <Association Name="FK_ClassAttendance_StudentId">
+          <End Type="SchoolU_DBModel.Student" Role="Student" Multiplicity="1" />
+          <End Type="SchoolU_DBModel.ClassAttendance" Role="ClassAttendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="ClassAttendance">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_StudentYearId">
+          <End Type="SchoolU_DBModel.StudentYear" Role="StudentYear" Multiplicity="1" />
+          <End Type="SchoolU_DBModel.Student" Role="Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentYear">
+              <PropertyRef Name="StudentYearId" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="StudentYearId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentClasses_StudentId">
+          <End Type="SchoolU_DBModel.Student" Role="Student" Multiplicity="1" />
+          <End Type="SchoolU_DBModel.StudentClass" Role="StudentClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="StudentClass">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentClassGrades_StudentId">
+          <End Type="SchoolU_DBModel.Student" Role="Student" Multiplicity="1" />
+          <End Type="SchoolU_DBModel.StudentClassGrade" Role="StudentClassGrade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="StudentClassGrade">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentFinalGrades_StudentId">
+          <End Type="SchoolU_DBModel.Student" Role="Student" Multiplicity="1" />
+          <End Type="SchoolU_DBModel.StudentFinalGrade" Role="StudentFinalGrade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="StudentFinalGrade">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentMajor_StudentId">
+          <End Type="SchoolU_DBModel.Student" Role="Student" Multiplicity="1" />
+          <End Type="SchoolU_DBModel.StudentMajor" Role="StudentMajor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="StudentMajor">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentMinor_StudentId">
+          <End Type="SchoolU_DBModel.Student" Role="Student" Multiplicity="1" />
+          <End Type="SchoolU_DBModel.StudentMinor" Role="StudentMinor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="StudentMinor">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1338,16 +1339,6 @@
                 <ScalarProperty Name="AdminId" ColumnName="AdminId" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Buildings">
-            <EntityTypeMapping TypeName="SchoolU_DBModel.Building">
-              <MappingFragment StoreEntitySet="Building">
-                <ScalarProperty Name="BuildingId" ColumnName="BuildingId" />
-                <ScalarProperty Name="BuildingName" ColumnName="BuildingName" />
-                <ScalarProperty Name="BuildingAbbreviation" ColumnName="BuildingAbbreviation" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1421,6 +1412,7 @@
           <EntitySetMapping Name="Departments">
             <EntityTypeMapping TypeName="SchoolU_DBModel.Department">
               <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="DepartmentAbbr" ColumnName="DepartmentAbbr" />
                 <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
                 <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
               </MappingFragment>
@@ -1443,23 +1435,9 @@
           <EntitySetMapping Name="Majors">
             <EntityTypeMapping TypeName="SchoolU_DBModel.Major">
               <MappingFragment StoreEntitySet="Major">
+                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="MajorId" ColumnName="MajorId" />
                 <ScalarProperty Name="MajorDescription" ColumnName="MajorDescription" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Professors">
-            <EntityTypeMapping TypeName="SchoolU_DBModel.Professor">
-              <MappingFragment StoreEntitySet="Professor">
-                <ScalarProperty Name="ProfessorId" ColumnName="ProfessorId" />
-                <ScalarProperty Name="ProfessorFirstName" ColumnName="ProfessorFirstName" />
-                <ScalarProperty Name="ProfessorLastName" ColumnName="ProfessorLastName" />
-                <ScalarProperty Name="ProfessorUserName" ColumnName="ProfessorUserName" />
-                <ScalarProperty Name="ProfessorPassword" ColumnName="ProfessorPassword" />
-                <ScalarProperty Name="ProfessorSalary" ColumnName="ProfessorSalary" />
-                <ScalarProperty Name="ProfessorPhoneNumber" ColumnName="ProfessorPhoneNumber" />
-                <ScalarProperty Name="ProfessorEmail" ColumnName="ProfessorEmail" />
-                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1492,19 +1470,6 @@
                 <ScalarProperty Name="SemesterId" ColumnName="SemesterId" />
                 <ScalarProperty Name="SchoolYearId" ColumnName="SchoolYearId" />
                 <ScalarProperty Name="SemesterDescription" ColumnName="SemesterDescription" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Students">
-            <EntityTypeMapping TypeName="SchoolU_DBModel.Student">
-              <MappingFragment StoreEntitySet="Student">
-                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
-                <ScalarProperty Name="StudentFirstName" ColumnName="StudentFirstName" />
-                <ScalarProperty Name="StudentLastName" ColumnName="StudentLastName" />
-                <ScalarProperty Name="StudentUserName" ColumnName="StudentUserName" />
-                <ScalarProperty Name="StudentEmail" ColumnName="StudentEmail" />
-                <ScalarProperty Name="StudentPassword" ColumnName="StudentPassword" />
-                <ScalarProperty Name="StudentYearId" ColumnName="StudentYearId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1560,6 +1525,43 @@
               <MappingFragment StoreEntitySet="StudentYear">
                 <ScalarProperty Name="StudentYearId" ColumnName="StudentYearId" />
                 <ScalarProperty Name="StudentYearDescription" ColumnName="StudentYearDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Buildings">
+            <EntityTypeMapping TypeName="SchoolU_DBModel.Building">
+              <MappingFragment StoreEntitySet="Building">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="BuildingAbbreviation" ColumnName="BuildingAbbreviation" />
+                <ScalarProperty Name="BuildingName" ColumnName="BuildingName" />
+                <ScalarProperty Name="BuildingId" ColumnName="BuildingId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Professors">
+            <EntityTypeMapping TypeName="SchoolU_DBModel.Professor">
+              <MappingFragment StoreEntitySet="Professor">
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="ProfessorEmail" ColumnName="ProfessorEmail" />
+                <ScalarProperty Name="ProfessorPhoneNumber" ColumnName="ProfessorPhoneNumber" />
+                <ScalarProperty Name="ProfessorPassword" ColumnName="ProfessorPassword" />
+                <ScalarProperty Name="ProfessorUserName" ColumnName="ProfessorUserName" />
+                <ScalarProperty Name="ProfessorLastName" ColumnName="ProfessorLastName" />
+                <ScalarProperty Name="ProfessorFirstName" ColumnName="ProfessorFirstName" />
+                <ScalarProperty Name="ProfessorId" ColumnName="ProfessorId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="SchoolU_DBModel.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="StudentYearId" ColumnName="StudentYearId" />
+                <ScalarProperty Name="StudentEmail" ColumnName="StudentEmail" />
+                <ScalarProperty Name="StudentPassword" ColumnName="StudentPassword" />
+                <ScalarProperty Name="StudentUserName" ColumnName="StudentUserName" />
+                <ScalarProperty Name="StudentLastName" ColumnName="StudentLastName" />
+                <ScalarProperty Name="StudentFirstName" ColumnName="StudentFirstName" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
