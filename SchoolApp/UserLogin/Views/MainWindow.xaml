@@ -40,7 +40,9 @@
                            FontSize="15"
                            Margin="0 0 0 3"/>
                 <TextBox Height="23" 
-                         FontSize="13"/>
+                         FontSize="13"
+                         Text="{Binding UserName}"
+                         Name="Username"/>
             </StackPanel>
 
             <!--Password Label and Textbox-->
@@ -59,7 +61,8 @@
                     Width="80" 
                     Content="{StaticResource SignInlbl}" 
                     Margin="72 13 10 0"
-                    HorizontalAlignment="Right"/>
+                    HorizontalAlignment="Right"
+                    Click="ValidatePassword"/>
 
         </StackPanel>
 

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UserLogin.ViewModels;
 
 namespace UserLogin
 {
@@ -20,9 +21,20 @@ namespace UserLogin
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly MainWindowViewModel mvm = new MainWindowViewModel();
         public MainWindow()
         {
             InitializeComponent();
+            Username.Focus();
+            DataContext = mvm;
+        }
+
+        private void ValidatePassword(object sender, RoutedEventArgs e)
+        {
+            if (DataContext != null)
+            {
+                mvm.ValidateUserLogin(PwdBox.Password);
+            }
         }
     }
 }
