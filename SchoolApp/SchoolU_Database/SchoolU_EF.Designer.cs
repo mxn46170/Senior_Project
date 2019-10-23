@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Tony\Documents\FINAL SEMESTER\Senior Project Stuff\DB_dll\SchoolU_Database\SchoolU_EF.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Tony\Documents\FINAL SEMESTER\Test Recent checkins\SchoolApp\SchoolU_Database\SchoolU_EF.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

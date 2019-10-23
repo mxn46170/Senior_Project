@@ -110,7 +110,6 @@
           </Key>
           <Property Name="MajorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MajorDescription" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Status" Type="char" MaxLength="1" Nullable="false" />
         </EntityType>
         <EntityType Name="Professor">
           <Key>
@@ -121,6 +120,7 @@
           <Property Name="ProfessorLastName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ProfessorUserName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ProfessorPassword" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ProfessorSalary" Type="decimal" Precision="8" Scale="2" Nullable="false" />
           <Property Name="ProfessorPhoneNumber" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="ProfessorEmail" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="DepartmentId" Type="int" Nullable="false" />
@@ -763,7 +763,6 @@
           <Property Name="MajorDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="StudentMajors" Relationship="Self.FK_StudentMajor_MajorId" FromRole="Major" ToRole="StudentMajor" />
           <NavigationProperty Name="StudentMinors" Relationship="Self.FK_StudentMinor_MinorId" FromRole="Major" ToRole="StudentMinor" />
-          <Property Name="Status" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
         </EntityType>
         <EntityType Name="SchoolInfo">
           <Key>
@@ -1119,12 +1118,7 @@
             <End Role="StudentClasses" EntitySet="StudentClasses" />
             <End Role="StudentFinalGrades" EntitySet="StudentFinalGrades" />
           </AssociationSet>
-          <EntitySet Name="Buildings" EntityType="SchoolU_DBModel.Building" />
           <EntitySet Name="Professors" EntityType="SchoolU_DBModel.Professor" />
-          <AssociationSet Name="FK_BuildingRooms_BuildingId" Association="SchoolU_DBModel.FK_BuildingRooms_BuildingId">
-            <End Role="Building" EntitySet="Buildings" />
-            <End Role="BuildingRoom" EntitySet="BuildingRooms" />
-          </AssociationSet>
           <AssociationSet Name="FK_Class_ProfessorId" Association="SchoolU_DBModel.FK_Class_ProfessorId">
             <End Role="Professor" EntitySet="Professors" />
             <End Role="Class" EntitySet="Classes" />
@@ -1162,17 +1156,12 @@
             <End Role="Student" EntitySet="Students" />
             <End Role="StudentMinor" EntitySet="StudentMinors" />
           </AssociationSet>
+          <EntitySet Name="Buildings" EntityType="SchoolU_DBModel.Building" />
+          <AssociationSet Name="FK_BuildingRooms_BuildingId" Association="SchoolU_DBModel.FK_BuildingRooms_BuildingId">
+            <End Role="Building" EntitySet="Buildings" />
+            <End Role="BuildingRoom" EntitySet="BuildingRooms" />
+          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Building">
-          <Key>
-            <PropertyRef Name="BuildingId" />
-          </Key>
-          <Property Name="BuildingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="BuildingName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="BuildingAbbreviation" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="Status" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="BuildingRooms" Relationship="SchoolU_DBModel.FK_BuildingRooms_BuildingId" FromRole="Building" ToRole="BuildingRoom" />
-        </EntityType>
         <EntityType Name="Professor">
           <Key>
             <PropertyRef Name="ProfessorId" />
@@ -1187,19 +1176,8 @@
           <Property Name="DepartmentId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Classes" Relationship="SchoolU_DBModel.FK_Class_ProfessorId" FromRole="Professor" ToRole="Class" />
           <NavigationProperty Name="Department" Relationship="SchoolU_DBModel.FK_Professor_DepartmentId" FromRole="Professor" ToRole="Department" />
+          <Property Name="ProfessorSalary" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
         </EntityType>
-        <Association Name="FK_BuildingRooms_BuildingId">
-          <End Type="SchoolU_DBModel.Building" Role="Building" Multiplicity="1" />
-          <End Type="SchoolU_DBModel.BuildingRoom" Role="BuildingRoom" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Building">
-              <PropertyRef Name="BuildingId" />
-            </Principal>
-            <Dependent Role="BuildingRoom">
-              <PropertyRef Name="BuildingId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Class_ProfessorId">
           <End Type="SchoolU_DBModel.Professor" Role="Professor" Multiplicity="1" />
           <End Type="SchoolU_DBModel.Class" Role="Class" Multiplicity="*" />
@@ -1327,6 +1305,28 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Building">
+          <Key>
+            <PropertyRef Name="BuildingId" />
+          </Key>
+          <Property Name="BuildingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BuildingName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BuildingAbbreviation" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="BuildingRooms" Relationship="SchoolU_DBModel.FK_BuildingRooms_BuildingId" FromRole="Building" ToRole="BuildingRoom" />
+        </EntityType>
+        <Association Name="FK_BuildingRooms_BuildingId">
+          <End Type="SchoolU_DBModel.Building" Role="Building" Multiplicity="1" />
+          <End Type="SchoolU_DBModel.BuildingRoom" Role="BuildingRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Building">
+              <PropertyRef Name="BuildingId" />
+            </Principal>
+            <Dependent Role="BuildingRoom">
+              <PropertyRef Name="BuildingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1435,7 +1435,6 @@
           <EntitySetMapping Name="Majors">
             <EntityTypeMapping TypeName="SchoolU_DBModel.Major">
               <MappingFragment StoreEntitySet="Major">
-                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="MajorId" ColumnName="MajorId" />
                 <ScalarProperty Name="MajorDescription" ColumnName="MajorDescription" />
               </MappingFragment>
@@ -1528,19 +1527,10 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Buildings">
-            <EntityTypeMapping TypeName="SchoolU_DBModel.Building">
-              <MappingFragment StoreEntitySet="Building">
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="BuildingAbbreviation" ColumnName="BuildingAbbreviation" />
-                <ScalarProperty Name="BuildingName" ColumnName="BuildingName" />
-                <ScalarProperty Name="BuildingId" ColumnName="BuildingId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Professors">
             <EntityTypeMapping TypeName="SchoolU_DBModel.Professor">
               <MappingFragment StoreEntitySet="Professor">
+                <ScalarProperty Name="ProfessorSalary" ColumnName="ProfessorSalary" />
                 <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
                 <ScalarProperty Name="ProfessorEmail" ColumnName="ProfessorEmail" />
                 <ScalarProperty Name="ProfessorPhoneNumber" ColumnName="ProfessorPhoneNumber" />
@@ -1562,6 +1552,16 @@
                 <ScalarProperty Name="StudentLastName" ColumnName="StudentLastName" />
                 <ScalarProperty Name="StudentFirstName" ColumnName="StudentFirstName" />
                 <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Buildings">
+            <EntityTypeMapping TypeName="SchoolU_DBModel.Building">
+              <MappingFragment StoreEntitySet="Building">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="BuildingAbbreviation" ColumnName="BuildingAbbreviation" />
+                <ScalarProperty Name="BuildingName" ColumnName="BuildingName" />
+                <ScalarProperty Name="BuildingId" ColumnName="BuildingId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
