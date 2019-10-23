@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Administration.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,18 @@ namespace Administration.Views
     /// </summary>
     public partial class DepartmentsSetupView : UserControl
     {
+        private readonly DepartmentsSetupViewModel dpvm = new DepartmentsSetupViewModel();
         public DepartmentsSetupView()
         {
             InitializeComponent();
+            DataContext = dpvm;
+        }
+
+        private void AddDepartment(object sender, RoutedEventArgs e)
+        {
+            dpvm.CommitDepartment();
+            dpvm.AddDepartment();
+            dpvm.ClearFields();
         }
     }
 }

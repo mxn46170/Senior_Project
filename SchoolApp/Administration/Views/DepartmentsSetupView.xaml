@@ -3,9 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Administration.Views"
+             xmlns:local="clr-namespace:Administration.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="900">
+
+    <UserControl.DataContext>
+        <local:DepartmentsSetupViewModel/>
+    </UserControl.DataContext>
     
     <Grid>
         <Grid.RowDefinitions>
@@ -25,7 +29,8 @@
                        Margin="0 0 0 8"/>
             <TextBox Width="400"
                      HorizontalAlignment="Left"
-                     FontSize="14"/>
+                     FontSize="14"
+                     Text="{Binding DpName, UpdateSourceTrigger=PropertyChanged}"/>
 
             <TextBlock Text="{StaticResource DepartmentAbbrlbl}"
                        FontWeight="Bold" 
@@ -33,7 +38,8 @@
                        Margin="0 40 0 8"/>
             <TextBox Width="200"
                      HorizontalAlignment="Left" 
-                     FontSize="14"/>
+                     FontSize="14"
+                     Text="{Binding DpAbbr, UpdateSourceTrigger=PropertyChanged}"/>
         </StackPanel>
 
         <Grid Grid.Row="1"
@@ -47,8 +53,19 @@
                       Width="550" 
                       HorizontalAlignment="Left" 
                       VerticalAlignment="Top"
-                      Margin="0 0 0 8">
-                <ListViewItem Content="Temp List item"/>
+                      Margin="0 0 0 8"
+                      ItemsSource="{Binding DepartmentCollection}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Department Name" 
+                                        Width="250" 
+                                        DisplayMemberBinding="{Binding DepartmentName}"/>
+                        <GridViewColumn Header="Abbr"
+                                        Width="100" 
+                                        DisplayMemberBinding="{Binding DepartmentAbbr}"/>
+                    </GridView>
+                </ListView.View>
+                
             </ListView>
         
         
@@ -56,11 +73,11 @@
                         Margin="0 0 70 0">
                 <Button Content="{StaticResource Addlbl}" 
                         Height="30"
-                        Margin="0 0 0 20"/>
+                        Margin="0 0 0 20" Click="AddDepartment" />
                 <Button Content="{StaticResource Editlbl}"
                         Height="30"
                         Margin="0 0 0 20"/>
-                <Button Content="{StaticResource Deletelbl}" 
+                <Button Content="{StaticResource Deletelbl}"
                         Height="30"
                         Margin="0 0 0 20"/>
                 <Button Content="{StaticResource Cancellbl}" 
