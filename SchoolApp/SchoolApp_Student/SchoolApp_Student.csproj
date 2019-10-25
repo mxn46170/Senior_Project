@@ -33,6 +33,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>SchoolU.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="SchoolU_Database">
       <HintPath>..\SchoolU_Database\bin\Debug\SchoolU_Database.dll</HintPath>
@@ -221,6 +224,9 @@
     <Resource Include="Images\Icons\Logout.ico" />
     <Resource Include="Images\Icons\Settings.ico" />
     <Resource Include="Images\Icons\Shutdown.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="SchoolU.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
