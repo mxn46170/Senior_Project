@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -11,6 +12,18 @@ namespace SchoolApp_Professor.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
+
+        #region Protected Methods
+        protected void SetupDataDirectory()
+        {
+            string _databaseLocation;
+            _databaseLocation = @"SchoolApp";
+            var path = Path.GetFullPath(_databaseLocation);
+            var temp = path.Substring(0, path.Length - 30);
+            var temp1 = temp + "\\SchoolU_Database";
+            AppDomain.CurrentDomain.SetData("DataDirectory", temp1);
+        }
+        #endregion
 
         #region INotifyPropertyChanged
 
