@@ -10,6 +10,18 @@
     <UserControl.DataContext>
         <local:DepartmentsSetupViewModel/>
     </UserControl.DataContext>
+
+    <UserControl.Resources>
+        <Style TargetType="TextBox">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip"
+                            Value="{Binding RelativeSource={x:Static RelativeSource.Self},
+                                    Path=(Validation.Errors)[0].ErrorContent}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
     
     <Grid>
         <Grid.RowDefinitions>
@@ -30,7 +42,8 @@
             <TextBox Width="400"
                      HorizontalAlignment="Left"
                      FontSize="14"
-                     Text="{Binding DpName, UpdateSourceTrigger=PropertyChanged}"/>
+                     Text="{Binding DpName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
+            </TextBox>
 
             <TextBlock Text="{StaticResource DepartmentAbbrlbl}"
                        FontWeight="Bold" 
@@ -39,7 +52,7 @@
             <TextBox Width="200"
                      HorizontalAlignment="Left" 
                      FontSize="14"
-                     Text="{Binding DpAbbr, UpdateSourceTrigger=PropertyChanged}"/>
+                     Text="{Binding DpAbbr, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
         </StackPanel>
 
         <Grid Grid.Row="1"
@@ -73,7 +86,9 @@
                         Margin="0 0 70 0">
                 <Button Content="{StaticResource Addlbl}" 
                         Height="30"
-                        Margin="0 0 0 20" Click="AddDepartment" />
+                        Margin="0 0 0 20" 
+                        Click="AddDepartment"
+                        IsEnabled="{Binding IsValid, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
                 <Button Content="{StaticResource Editlbl}"
                         Height="30"
                         Margin="0 0 0 20"/>
