@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Data.Entity;
 using System.IO;
 using System.Linq;
@@ -11,7 +12,7 @@ using System.Windows;
 
 namespace Administration.ViewModels
 {
-    public class DepartmentsSetupViewModel : BaseViewModel
+    public class DepartmentsSetupViewModel : BaseViewModel, IDataErrorInfo
     {
         #region Constructor
 
@@ -19,6 +20,7 @@ namespace Administration.ViewModels
         {
             SetupDataDirectory();
             AddDepartment();
+            IsValid = false;
         }
         #endregion
 
@@ -27,10 +29,24 @@ namespace Administration.ViewModels
         
         private string _dpAbbr;
         private string _dpName;
+        private bool _isValid;
         #endregion
 
         #region Public Properties
         public ObservableCollection<Department> DepartmentCollection { get; set; } = new ObservableCollection<Department>();
+
+        public bool IsValid
+        {
+            get
+            {
+                return _isValid;
+            }
+            set
+            {
+                _isValid = value;
+                propertyChanged(nameof(IsValid));
+            }
+        }
 
         public string DpName
         {
@@ -110,13 +126,44 @@ namespace Administration.ViewModels
                 return;
             }
         }
-       
 
         #endregion
 
         #region Private Methods
 
 
+        #endregion
+
+        #region IDataErrorInfo
+        public string Error
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public string this[string columnName]
+        {
+            get
+            {
+                string error = String.Empty;
+                switch (columnName)
+                {
+                    case "DpName":
+                        if ((string.IsNullOrWhiteSpace(DpName) && !string.IsNullOrWhiteSpace(DpAbbr)) || (string.IsNullOrWhiteSpace(DpName) && string.IsNullOrWhiteSpace(DpAbbr)))
+                        {
+                            error = "Department Name is required.";
+                        }
+                        break;
+                    case "DpAbbr":
+                        if ((string.IsNullOrWhiteSpace(DpAbbr) && !string.IsNullOrWhiteSpace(DpName)) || (string.IsNullOrWhiteSpace(DpAbbr) && string.IsNullOrWhiteSpace(DpName)))
+                        {
+                            error = "Department Abbreviation is required.";
+                        }
+                        break;
+                }
+                IsValid = (!string.IsNullOrWhiteSpace(DpName) && !string.IsNullOrWhiteSpace(DpAbbr)) ? true : false;
+                return error;
+            }
+        }
         #endregion
     }
 }

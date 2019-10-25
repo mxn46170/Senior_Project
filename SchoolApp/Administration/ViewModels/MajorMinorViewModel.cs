@@ -2,31 +2,47 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Data.Entity;
 using System.Linq;
 using System.Windows;
 
 namespace Administration.ViewModels
 {
-    public class MajorMinorViewModel : BaseViewModel
+    public class MajorMinorViewModel : BaseViewModel, IDataErrorInfo
     {
         #region Constructor
         public MajorMinorViewModel()
         {
             SetupDataDirectory();
             AddMajor();
+            IsValid = false;
         }
         #endregion
 
         #region Private Fields
         private string _majorDesc;
         private string _majorAbbr;
+        private bool _isValid;
         private ObservableCollection<Major> _majorCollection { get; set; } = new ObservableCollection<Major>();
         #endregion
 
         #region Public Properties
 
         public ObservableCollection<Major> MajorCollection { get; set; } = new ObservableCollection<Major>();
+
+        public bool IsValid
+        {
+            get
+            {
+                return _isValid;
+            }
+            set
+            {
+                _isValid = value;
+                propertyChanged(nameof(IsValid));
+            }
+        }
 
         public string MajorDesc
         {
@@ -107,7 +123,38 @@ namespace Administration.ViewModels
 
         }
 
+        #endregion
 
+        #region IDataErrorInfo
+        public string Error
+        {
+            get { throw new NotImplementedException(); }
+        }
+
+        public string this[string columnName]
+        {
+            get
+            {
+                string error = String.Empty;
+                switch (columnName)
+                {
+                    case "MajorDesc":
+                        if ((string.IsNullOrWhiteSpace(MajorDesc) && !string.IsNullOrWhiteSpace(MajorAbbr)) || (string.IsNullOrWhiteSpace(MajorDesc) && string.IsNullOrWhiteSpace(MajorAbbr)))
+                        {
+                            error = "Major Description is required.";
+                        }
+                        break;
+                    case "MajorAbbr":
+                        if ((string.IsNullOrWhiteSpace(MajorAbbr) && !string.IsNullOrWhiteSpace(MajorDesc)) || (string.IsNullOrWhiteSpace(MajorAbbr) && string.IsNullOrWhiteSpace(MajorDesc)))
+                        {
+                            error = "Major Abbreviation is required.";
+                        }
+                        break;
+                }
+                IsValid = (!string.IsNullOrWhiteSpace(MajorDesc) && !string.IsNullOrWhiteSpace(MajorAbbr)) ? true : false;
+                return error;
+            }
+        }
         #endregion
 
 
