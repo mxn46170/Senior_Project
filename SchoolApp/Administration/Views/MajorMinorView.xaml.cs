@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Administration.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,19 @@ namespace Administration.Views
     /// </summary>
     public partial class MajorMinorView : UserControl
     {
+        private readonly MajorMinorViewModel mmwm = new MajorMinorViewModel();
+
         public MajorMinorView()
         {
             InitializeComponent();
+            DataContext = mmwm;
+        }
+
+        private void AddMajor(object sender, RoutedEventArgs e)
+        {
+            mmwm.CommitMajor();
+            mmwm.AddMajor();
+            mmwm.ClearFields();
         }
     }
 }

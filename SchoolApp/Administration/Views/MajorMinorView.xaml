@@ -4,8 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Administration.Views"
+             xmlns:local1="clr-namespace:Administration.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="700">
+
+    <UserControl.DataContext>
+        <local1:MajorMinorViewModel/>
+    </UserControl.DataContext>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2.1*" />
@@ -38,7 +44,8 @@
                  Height="30"
                  HorizontalAlignment="Left" 
                  FontSize="14"
-                 Margin="30 0 0 0"/>
+                 Margin="30 0 0 0"
+                 Text="{Binding MajorDesc, UpdateSourceTrigger=PropertyChanged}"/>
         <TextBlock Grid.Row="1"
                    Text="{StaticResource Abbrlbl}" 
                    FontWeight="Bold" 
@@ -51,7 +58,8 @@
                  Height="30"
                  HorizontalAlignment="Left" 
                  FontSize="14" 
-                 Margin="400 0 0 0"/>
+                 Margin="400 0 0 0"
+                 Text="{Binding MajorAbbr, UpdateSourceTrigger=PropertyChanged}"/>
 
         <StackPanel Grid.Column="1" 
                     Grid.Row="3"
@@ -61,7 +69,8 @@
                     Content="{StaticResource Addlbl}"
                     FontSize="14"
                     HorizontalAlignment="Left"
-                    Margin="0 0 0 20"/>
+                    Margin="0 0 0 20" 
+                    Click="AddMajor"/>
             <Button Height="30" 
                     Width="150" 
                     Content="{StaticResource Editlbl}"
@@ -84,8 +93,18 @@
         <ListView Margin="30 50 40 0" 
                   Grid.Row="3"
                   VerticalAlignment="Top" 
-                  Height="300">
-            <ListViewItem Content="Temp List Item"/>
+                  Height="300"
+                  ItemsSource="{Binding MajorCollection}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Major Description" 
+                                        Width="250" 
+                                        DisplayMemberBinding="{Binding MajorDescription}"/>
+                    <GridViewColumn Header="Abbr"
+                                        Width="100" 
+                                        DisplayMemberBinding="{Binding MajorAbbr}"/>
+                </GridView>
+            </ListView.View>
         </ListView>
 
     </Grid>
