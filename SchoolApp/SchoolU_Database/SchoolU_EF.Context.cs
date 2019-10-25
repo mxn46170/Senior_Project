@@ -26,7 +26,6 @@ namespace SchoolU_Database
         }
     
         public virtual DbSet<Admin> Admins { get; set; }
-        public virtual DbSet<Building> Buildings { get; set; }
         public virtual DbSet<BuildingRoom> BuildingRooms { get; set; }
         public virtual DbSet<Class> Classes { get; set; }
         public virtual DbSet<ClassAnnouncement> ClassAnnouncements { get; set; }
@@ -35,17 +34,18 @@ namespace SchoolU_Database
         public virtual DbSet<Course> Courses { get; set; }
         public virtual DbSet<Department> Departments { get; set; }
         public virtual DbSet<Event> Events { get; set; }
-        public virtual DbSet<Major> Majors { get; set; }
-        public virtual DbSet<Professor> Professors { get; set; }
         public virtual DbSet<SchoolInfo> SchoolInfoes { get; set; }
         public virtual DbSet<SchoolYear> SchoolYears { get; set; }
         public virtual DbSet<Semester> Semesters { get; set; }
-        public virtual DbSet<Student> Students { get; set; }
         public virtual DbSet<StudentClass> StudentClasses { get; set; }
         public virtual DbSet<StudentClassGrade> StudentClassGrades { get; set; }
         public virtual DbSet<StudentFinalGrade> StudentFinalGrades { get; set; }
         public virtual DbSet<StudentMajor> StudentMajors { get; set; }
         public virtual DbSet<StudentMinor> StudentMinors { get; set; }
         public virtual DbSet<StudentYear> StudentYears { get; set; }
+        public virtual DbSet<Professor> Professors { get; set; }
+        public virtual DbSet<Student> Students { get; set; }
+        public virtual DbSet<Building> Buildings { get; set; }
+        public virtual DbSet<Major> Majors { get; set; }
     }
 }

@@ -14,7 +14,6 @@
         <EntityTypeShape EntityType="SchoolU_DBModel.Course" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SchoolU_DBModel.Department" Width="1.5" PointX="0.75" PointY="11.5" IsExpanded="true" />
         <EntityTypeShape EntityType="SchoolU_DBModel.Event" Width="1.5" PointX="3" PointY="10.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="SchoolU_DBModel.Major" Width="1.5" PointX="12.75" PointY="12.5" IsExpanded="true" />
         <EntityTypeShape EntityType="SchoolU_DBModel.SchoolInfo" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SchoolU_DBModel.SchoolYear" Width="1.5" PointX="0.75" PointY="19" IsExpanded="true" />
         <EntityTypeShape EntityType="SchoolU_DBModel.Semester" Width="1.5" PointX="3" PointY="19" IsExpanded="true" />
@@ -34,14 +33,10 @@
         <AssociationConnector Association="SchoolU_DBModel.FK_StudentClasses_ClassId" ManuallyRouted="false" />
         <AssociationConnector Association="SchoolU_DBModel.FK_Course_DepartmentId" ManuallyRouted="false" />
         <AssociationConnector Association="SchoolU_DBModel.FK_Events_InterestedDeparmentId" ManuallyRouted="false" />
-        <AssociationConnector Association="SchoolU_DBModel.FK_StudentMajor_MajorId" ManuallyRouted="false" />
-        <AssociationConnector Association="SchoolU_DBModel.FK_StudentMinor_MinorId" ManuallyRouted="false" />
         <AssociationConnector Association="SchoolU_DBModel.FK_Semester_SchoolYearId" ManuallyRouted="false" />
         <AssociationConnector Association="SchoolU_DBModel.FK_StudentClassGrades_ClassId" ManuallyRouted="false" />
         <AssociationConnector Association="SchoolU_DBModel.FK_StudentFinalGrades_ClassId" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="SchoolU_DBModel.Building" Width="1.5" PointX="0.75" PointY="4.125" />
         <EntityTypeShape EntityType="SchoolU_DBModel.Professor" Width="1.5" PointX="3" PointY="15.125" />
-        <AssociationConnector Association="SchoolU_DBModel.FK_BuildingRooms_BuildingId" />
         <AssociationConnector Association="SchoolU_DBModel.FK_Class_ProfessorId" />
         <AssociationConnector Association="SchoolU_DBModel.FK_Professor_DepartmentId" />
         <EntityTypeShape EntityType="SchoolU_DBModel.Student" Width="1.5" PointX="8.25" PointY="4.75" />
@@ -52,6 +47,11 @@
         <AssociationConnector Association="SchoolU_DBModel.FK_StudentFinalGrades_StudentId" />
         <AssociationConnector Association="SchoolU_DBModel.FK_StudentMajor_StudentId" />
         <AssociationConnector Association="SchoolU_DBModel.FK_StudentMinor_StudentId" />
+        <EntityTypeShape EntityType="SchoolU_DBModel.Building" Width="1.5" PointX="0.75" PointY="4.125" />
+        <AssociationConnector Association="SchoolU_DBModel.FK_BuildingRooms_BuildingId" />
+        <EntityTypeShape EntityType="SchoolU_DBModel.Major" Width="1.5" PointX="12.75" PointY="11" />
+        <AssociationConnector Association="SchoolU_DBModel.FK_StudentMajor_MajorId" />
+        <AssociationConnector Association="SchoolU_DBModel.FK_StudentMinor_MinorId" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

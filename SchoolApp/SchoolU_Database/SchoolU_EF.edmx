@@ -110,6 +110,7 @@
           </Key>
           <Property Name="MajorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MajorDescription" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MajorAbbr" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Professor">
           <Key>
@@ -755,15 +756,6 @@
           <Property Name="IsSchoolWideEvent" Type="Boolean" />
           <NavigationProperty Name="Department" Relationship="Self.FK_Events_InterestedDeparmentId" FromRole="Events" ToRole="Department" />
         </EntityType>
-        <EntityType Name="Major">
-          <Key>
-            <PropertyRef Name="MajorId" />
-          </Key>
-          <Property Name="MajorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MajorDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="StudentMajors" Relationship="Self.FK_StudentMajor_MajorId" FromRole="Major" ToRole="StudentMajor" />
-          <NavigationProperty Name="StudentMinors" Relationship="Self.FK_StudentMinor_MinorId" FromRole="Major" ToRole="StudentMinor" />
-        </EntityType>
         <EntityType Name="SchoolInfo">
           <Key>
             <PropertyRef Name="SchoolInfoId" />
@@ -837,8 +829,8 @@
           <Property Name="StudentMajorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="StudentId" Type="Int32" Nullable="false" />
           <Property Name="MajorId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Major" Relationship="Self.FK_StudentMajor_MajorId" FromRole="StudentMajor" ToRole="Major" />
           <NavigationProperty Name="Student" Relationship="SchoolU_DBModel.FK_StudentMajor_StudentId" FromRole="StudentMajor" ToRole="Student" />
+          <NavigationProperty Name="Major" Relationship="SchoolU_DBModel.FK_StudentMajor_MajorId" FromRole="StudentMajor" ToRole="Major" />
         </EntityType>
         <EntityType Name="StudentMinor">
           <Key>
@@ -847,8 +839,8 @@
           <Property Name="StudentMinorId" Type="Int32" Nullable="false" />
           <Property Name="StudentId" Type="Int32" Nullable="false" />
           <Property Name="MinorId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Major" Relationship="Self.FK_StudentMinor_MinorId" FromRole="StudentMinor" ToRole="Major" />
           <NavigationProperty Name="Student" Relationship="SchoolU_DBModel.FK_StudentMinor_StudentId" FromRole="StudentMinor" ToRole="Student" />
+          <NavigationProperty Name="Major" Relationship="SchoolU_DBModel.FK_StudentMinor_MinorId" FromRole="StudentMinor" ToRole="Major" />
         </EntityType>
         <EntityType Name="StudentYear">
           <Key>
@@ -978,30 +970,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_StudentMajor_MajorId">
-          <End Role="Major" Type="Self.Major" Multiplicity="1" />
-          <End Role="StudentMajor" Type="Self.StudentMajor" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Major">
-              <PropertyRef Name="MajorId" />
-            </Principal>
-            <Dependent Role="StudentMajor">
-              <PropertyRef Name="MajorId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_StudentMinor_MinorId">
-          <End Role="Major" Type="Self.Major" Multiplicity="1" />
-          <End Role="StudentMinor" Type="Self.StudentMinor" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Major">
-              <PropertyRef Name="MajorId" />
-            </Principal>
-            <Dependent Role="StudentMinor">
-              <PropertyRef Name="MinorId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Semester_SchoolYearId">
           <End Role="SchoolYear" Type="Self.SchoolYear" Multiplicity="1" />
           <End Role="Semester" Type="Self.Semester" Multiplicity="*" />
@@ -1048,7 +1016,6 @@
           <EntitySet Name="Courses" EntityType="Self.Course" />
           <EntitySet Name="Departments" EntityType="Self.Department" />
           <EntitySet Name="Events" EntityType="Self.Event" />
-          <EntitySet Name="Majors" EntityType="Self.Major" />
           <EntitySet Name="SchoolInfoes" EntityType="Self.SchoolInfo" />
           <EntitySet Name="SchoolYears" EntityType="Self.SchoolYear" />
           <EntitySet Name="Semesters" EntityType="Self.Semester" />
@@ -1097,14 +1064,6 @@
           <AssociationSet Name="FK_Events_InterestedDeparmentId" Association="Self.FK_Events_InterestedDeparmentId">
             <End Role="Department" EntitySet="Departments" />
             <End Role="Events" EntitySet="Events" />
-          </AssociationSet>
-          <AssociationSet Name="FK_StudentMajor_MajorId" Association="Self.FK_StudentMajor_MajorId">
-            <End Role="Major" EntitySet="Majors" />
-            <End Role="StudentMajor" EntitySet="StudentMajors" />
-          </AssociationSet>
-          <AssociationSet Name="FK_StudentMinor_MinorId" Association="Self.FK_StudentMinor_MinorId">
-            <End Role="Major" EntitySet="Majors" />
-            <End Role="StudentMinor" EntitySet="StudentMinors" />
           </AssociationSet>
           <AssociationSet Name="FK_Semester_SchoolYearId" Association="Self.FK_Semester_SchoolYearId">
             <End Role="SchoolYear" EntitySet="SchoolYears" />
@@ -1160,6 +1119,15 @@
           <AssociationSet Name="FK_BuildingRooms_BuildingId" Association="SchoolU_DBModel.FK_BuildingRooms_BuildingId">
             <End Role="Building" EntitySet="Buildings" />
             <End Role="BuildingRoom" EntitySet="BuildingRooms" />
+          </AssociationSet>
+          <EntitySet Name="Majors" EntityType="SchoolU_DBModel.Major" />
+          <AssociationSet Name="FK_StudentMajor_MajorId" Association="SchoolU_DBModel.FK_StudentMajor_MajorId">
+            <End Role="Major" EntitySet="Majors" />
+            <End Role="StudentMajor" EntitySet="StudentMajors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentMinor_MinorId" Association="SchoolU_DBModel.FK_StudentMinor_MinorId">
+            <End Role="Major" EntitySet="Majors" />
+            <End Role="StudentMinor" EntitySet="StudentMinors" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Professor">
@@ -1327,6 +1295,40 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Major">
+          <Key>
+            <PropertyRef Name="MajorId" />
+          </Key>
+          <Property Name="MajorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MajorDescription" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MajorAbbr" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="StudentMajors" Relationship="SchoolU_DBModel.FK_StudentMajor_MajorId" FromRole="Major" ToRole="StudentMajor" />
+          <NavigationProperty Name="StudentMinors" Relationship="SchoolU_DBModel.FK_StudentMinor_MinorId" FromRole="Major" ToRole="StudentMinor" />
+        </EntityType>
+        <Association Name="FK_StudentMajor_MajorId">
+          <End Type="SchoolU_DBModel.Major" Role="Major" Multiplicity="1" />
+          <End Type="SchoolU_DBModel.StudentMajor" Role="StudentMajor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Major">
+              <PropertyRef Name="MajorId" />
+            </Principal>
+            <Dependent Role="StudentMajor">
+              <PropertyRef Name="MajorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentMinor_MinorId">
+          <End Type="SchoolU_DBModel.Major" Role="Major" Multiplicity="1" />
+          <End Type="SchoolU_DBModel.StudentMinor" Role="StudentMinor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Major">
+              <PropertyRef Name="MajorId" />
+            </Principal>
+            <Dependent Role="StudentMinor">
+              <PropertyRef Name="MinorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1429,14 +1431,6 @@
                 <ScalarProperty Name="EventEndTime" ColumnName="EventEndTime" />
                 <ScalarProperty Name="IntrestedDepartment" ColumnName="IntrestedDepartment" />
                 <ScalarProperty Name="IsSchoolWideEvent" ColumnName="IsSchoolWideEvent" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Majors">
-            <EntityTypeMapping TypeName="SchoolU_DBModel.Major">
-              <MappingFragment StoreEntitySet="Major">
-                <ScalarProperty Name="MajorId" ColumnName="MajorId" />
-                <ScalarProperty Name="MajorDescription" ColumnName="MajorDescription" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1562,6 +1556,15 @@
                 <ScalarProperty Name="BuildingAbbreviation" ColumnName="BuildingAbbreviation" />
                 <ScalarProperty Name="BuildingName" ColumnName="BuildingName" />
                 <ScalarProperty Name="BuildingId" ColumnName="BuildingId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Majors">
+            <EntityTypeMapping TypeName="SchoolU_DBModel.Major">
+              <MappingFragment StoreEntitySet="Major">
+                <ScalarProperty Name="MajorAbbr" ColumnName="MajorAbbr" />
+                <ScalarProperty Name="MajorDescription" ColumnName="MajorDescription" />
+                <ScalarProperty Name="MajorId" ColumnName="MajorId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
