@@ -76,6 +76,12 @@
             <sys:String x:Key="LastNamelbl">Last Name</sys:String>
             <sys:String x:Key="StudentYearlbl">Student Year</sys:String>
             <sys:String x:Key="ClearFiltersbtn">Clear Filters</sys:String>
+            <sys:String x:Key="Prerequisiteslbl">Pre-requisites</sys:String>
+            <sys:String x:Key="Courselbl">Course</sys:String>
+            <sys:String x:Key="AvailableCourseslbl">Available Courses</sys:String>
+            <sys:String x:Key="LeftArrowbtn">&lt;</sys:String>
+            <sys:String x:Key="RightArrowbtn">&gt;</sys:String>
+            <sys:String x:Key="SelectedPrerequisiteslbl">Selected Pre-requisites</sys:String>
 
             <!--Hard-coded Image locations-->
             <BitmapImage x:Key="HomeIcon" UriSource="..\Images\Icons\Home.ico"/>

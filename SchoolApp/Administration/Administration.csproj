@@ -71,6 +71,7 @@
     <Compile Include="ViewModels\EventsViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\MajorMinorViewModel.cs" />
+    <Compile Include="ViewModels\PrerequisitesViewModel.cs" />
     <Compile Include="ViewModels\SchoolSetupViewModel.cs" />
     <Compile Include="ViewModels\ProfessorsViewModel.cs" />
     <Compile Include="ViewModels\SchoolYearViewModel.cs" />
@@ -93,6 +94,9 @@
     </Compile>
     <Compile Include="Views\MajorMinorView.xaml.cs">
       <DependentUpon>MajorMinorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PrerequisitesView.xaml.cs">
+      <DependentUpon>PrerequisitesView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ProfessorsView.xaml.cs">
       <DependentUpon>ProfessorsView.xaml</DependentUpon>
@@ -142,6 +146,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\MajorMinorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PrerequisitesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
