@@ -148,13 +148,13 @@ namespace Administration.ViewModels
                 switch (columnName)
                 {
                     case "DpName":
-                        if ((string.IsNullOrWhiteSpace(DpName) && !string.IsNullOrWhiteSpace(DpAbbr)) || (string.IsNullOrWhiteSpace(DpName) && string.IsNullOrWhiteSpace(DpAbbr)))
+                        if (string.IsNullOrWhiteSpace(DpName))
                         {
                             error = "Department Name is required.";
                         }
                         break;
                     case "DpAbbr":
-                        if ((string.IsNullOrWhiteSpace(DpAbbr) && !string.IsNullOrWhiteSpace(DpName)) || (string.IsNullOrWhiteSpace(DpAbbr) && string.IsNullOrWhiteSpace(DpName)))
+                        if (string.IsNullOrWhiteSpace(DpAbbr))
                         {
                             error = "Department Abbreviation is required.";
                         }
