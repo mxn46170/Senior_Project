@@ -82,6 +82,13 @@
             <sys:String x:Key="LeftArrowbtn">&lt;</sys:String>
             <sys:String x:Key="RightArrowbtn">&gt;</sys:String>
             <sys:String x:Key="SelectedPrerequisiteslbl">Selected Pre-requisites</sys:String>
+            <sys:String x:Key="AddUserslbl">Add Users</sys:String>
+            <sys:String x:Key="Adminlbl">Admin</sys:String>
+            <sys:String x:Key="Studentlbl">Student</sys:String>
+            <sys:String x:Key="Professorlbl">Professor</sys:String>
+            <sys:String x:Key="Usernamelbl">Username</sys:String>
+            <sys:String x:Key="Passwordlbl">Password</sys:String>
+            <sys:String x:Key="UserTypelbl">User Type</sys:String>
 
             <!--Hard-coded Image locations-->
             <BitmapImage x:Key="HomeIcon" UriSource="..\Images\Icons\Home.ico"/>
