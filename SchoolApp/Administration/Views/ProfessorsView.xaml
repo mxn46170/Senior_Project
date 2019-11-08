@@ -103,11 +103,11 @@
                     VerticalAlignment="Bottom" 
                     HorizontalAlignment="Right"
                     Orientation="Horizontal">
-            <Button Content="{Binding Savelbl}" 
+            <Button Content="{StaticResource Savelbl}" 
                     Margin="0 0 30 30" 
                     Width="100" 
                     Click="SaveProfessor"/>
-            <Button Content="{Binding Cancellbl}" 
+            <Button Content="{StaticResource Cancellbl}" 
                     Margin="0 0 30 30" Width="100"/>
         </StackPanel>
     </Grid>
