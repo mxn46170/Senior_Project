@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Administration.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,16 @@ namespace Administration.Views
     /// </summary>
     public partial class ProfessorsView : UserControl
     {
+        private readonly ProfessorsViewModel pwm = new ProfessorsViewModel();
         public ProfessorsView()
         {
             InitializeComponent();
+            DataContext = pwm;
+        }
+
+        private void SaveProfessor(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }
