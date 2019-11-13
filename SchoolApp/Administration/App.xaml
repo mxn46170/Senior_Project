@@ -105,7 +105,8 @@
             <BitmapImage x:Key="CoursesIcon" UriSource="..\Images\Icons\Courses.ico"/>
             <BitmapImage x:Key="LogOutIcon" UriSource="..\Images\Icons\Logout.ico"/>
             <BitmapImage x:Key="EventsIcon" UriSource="..\Images\Icons\Events.ico"/>
-
+            <BitmapImage x:Key="RightArrow" UriSource="..\Images\ArrowRight.png"/>
+            <BitmapImage x:Key="LeftArrow" UriSource="..\Images\ArrowLeft.png"/>
 
 
             <Style TargetType="TextBox">
