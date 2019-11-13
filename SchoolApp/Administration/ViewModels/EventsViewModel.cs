@@ -340,6 +340,7 @@ namespace Administration.ViewModels
             {
                 CommitNewEvent();
                 ClearFields();
+                MessageBox.Show("Event added!",string.Empty, MessageBoxButton.OK, MessageBoxImage.Information);
             }
             return;
         }
