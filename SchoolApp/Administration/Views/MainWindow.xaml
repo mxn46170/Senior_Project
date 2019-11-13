@@ -49,9 +49,6 @@
         <DataTemplate DataType="{x:Type ViewModels:StudentSearchViewModel}">
             <controls:StudentSearchView/>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type ViewModels:PrerequisitesViewModel}">
-            <controls:PrerequisitesView/>
-        </DataTemplate>
     </Window.Resources>
 
     <Grid>
@@ -135,165 +132,163 @@
                        HorizontalAlignment="Center"/>
         </StackPanel>
 
-        <ScrollViewer Grid.Row="1">
-            <StackPanel Background="Black">
+        <StackPanel Grid.Row="1" 
+                    Background="Black">
 
-                <!--School Info-->
-                <Grid Margin="12 42 12 2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="2*"/>
-                    </Grid.ColumnDefinitions>
-                    <Image Source="{StaticResource SchoolInfoIcon}"
-                           Height="30"  
-                           Margin="-20 0 10 0"  
-                           Panel.ZIndex="1"/>
-                    <Button Content="{StaticResource SchoolSetuplbl}" 
-                            FontSize="16" 
-                            VerticalContentAlignment="Center" 
-                            Grid.ColumnSpan="2" 
-                            Click="DisplaySchoolInfoView"/>
-                </Grid>
+            <!--School Info-->
+            <Grid Margin="12 42 12 2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="{StaticResource SchoolInfoIcon}"
+                       Height="30"  
+                       Margin="-20 0 10 0"  
+                       Panel.ZIndex="1"/>
+                <Button Content="{StaticResource SchoolSetuplbl}" 
+                        FontSize="16" 
+                        VerticalContentAlignment="Center" 
+                        Grid.ColumnSpan="2" 
+                        Click="DisplaySchoolInfoView"/>
+            </Grid>
 
-                <!--School Year-->
-                <Grid Margin="12 42 12 2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="2*"/>
-                    </Grid.ColumnDefinitions>
-                    <Image Source="{StaticResource CalendarIcon}" 
-                           Height="30"  
-                           Margin="-20 0 10 0"  
-                           Panel.ZIndex="1"/>
-                    <Button Content="{StaticResource SchoolYearlbl}" 
-                            FontSize="16" 
-                            VerticalContentAlignment="Center" 
-                            Grid.ColumnSpan="2" 
-                            Click="DisplaySchoolYearView"/>
-                </Grid>
+            <!--School Year-->
+            <Grid Margin="12 42 12 2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="{StaticResource CalendarIcon}" 
+                       Height="30"  
+                       Margin="-20 0 10 0"  
+                       Panel.ZIndex="1"/>
+                <Button Content="{StaticResource SchoolYearlbl}" 
+                        FontSize="16" 
+                        VerticalContentAlignment="Center" 
+                        Grid.ColumnSpan="2" 
+                        Click="DisplaySchoolYearView"/>
+            </Grid>
 
-                <!--Buildings / Rooms-->
-                <Grid Margin="12 42 12 2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="2*"/>
-                    </Grid.ColumnDefinitions>
-                    <Image Source="{StaticResource BuildingsIcon}" 
-                           Height="30"
-                           Margin="-20 0 10 0"  
-                           Panel.ZIndex="1"/>
-                    <Button Content="{StaticResource BuildingRoomslbl}"
-                            FontSize="16" 
-                            VerticalContentAlignment="Center" 
-                            Grid.ColumnSpan="2" 
-                            Click="DisplayBuildingRoomsView"/>
-                </Grid>
+            <!--Buildings / Rooms-->
+            <Grid Margin="12 42 12 2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="{StaticResource BuildingsIcon}" 
+                       Height="30"
+                       Margin="-20 0 10 0"  
+                       Panel.ZIndex="1"/>
+                <Button Content="{StaticResource BuildingRoomslbl}"
+                        FontSize="16" 
+                        VerticalContentAlignment="Center" 
+                        Grid.ColumnSpan="2" 
+                        Click="DisplayBuildingRoomsView"/>
+            </Grid>
 
-                <!--Departments-->
-                <Grid Margin="12 42 12 2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="2*"/>
-                    </Grid.ColumnDefinitions>
-                    <Image Source="{StaticResource DepartmentsIcon}"
-                           Height="33"
-                           Margin="-17 0 10 0"  
-                           Panel.ZIndex="1"/>
-                    <Button Content="{StaticResource Departmentslbl}" 
-                            FontSize="16" 
-                            VerticalContentAlignment="Center" 
-                            Grid.ColumnSpan="2"
-                            Click="DisplayDepartmentsView"/>
-                </Grid>
+            <!--Departments-->
+            <Grid Margin="12 42 12 2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="{StaticResource DepartmentsIcon}"
+                       Height="33"
+                       Margin="-17 0 10 0"  
+                       Panel.ZIndex="1"/>
+                <Button Content="{StaticResource Departmentslbl}" 
+                        FontSize="16" 
+                        VerticalContentAlignment="Center" 
+                        Grid.ColumnSpan="2"
+                        Click="DisplayDepartmentsView"/>
+            </Grid>
 
-                <!--Majors / Minors-->
-                <Grid Margin="12 42 12 2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="2*"/>
-                    </Grid.ColumnDefinitions>
-                    <Image Source="{StaticResource MajorsIcon}"
-                           Height="25"
-                           Margin="-17 0 10 0"  
-                           Panel.ZIndex="1"/>
-                    <Button Content="{StaticResource Majorslbl}" 
-                            FontSize="16" 
-                            VerticalContentAlignment="Center" 
-                            Grid.ColumnSpan="2" 
-                            Click="DisplayMajorsView"/>
-                </Grid>
+            <!--Majors / Minors-->
+            <Grid Margin="12 42 12 2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="{StaticResource MajorsIcon}"
+                       Height="25"
+                       Margin="-17 0 10 0"  
+                       Panel.ZIndex="1"/>
+                <Button Content="{StaticResource Majorslbl}" 
+                        FontSize="16" 
+                        VerticalContentAlignment="Center" 
+                        Grid.ColumnSpan="2" 
+                        Click="DisplayMajorsView"/>
+            </Grid>
 
-                <!--Professors-->
-                <Grid Margin="12 42 12 2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="2*"/>
-                    </Grid.ColumnDefinitions>
-                    <Image Source="{StaticResource ProfessorsIcon}"
+            <!--Professors-->
+            <Grid Margin="12 42 12 2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="{StaticResource ProfessorsIcon}"
                        Height="33"  
                        Margin="-20 0 10 0" 
                        Panel.ZIndex="1"/>
-                    <Button Content="{StaticResource Professorslbl}"
+                <Button Content="{StaticResource Professorslbl}"
                         Grid.ColumnSpan="2"
                         FontSize="16"
                         VerticalContentAlignment="Center"
                         Click="DisplayProfessorsView"/>
-                </Grid>
+            </Grid>
 
-                <!--Courses-->
-                <Grid Margin="12 42 12 2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="2*"/>
-                    </Grid.ColumnDefinitions>
-                    <Image Source="{StaticResource CoursesIcon}"  
+            <!--Courses-->
+            <Grid Margin="12 42 12 2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="{StaticResource CoursesIcon}"  
                        Height="33"  
                        Margin="-20 0 10 0"  
                        Panel.ZIndex="1"/>
-                    <Button Content="{StaticResource Courseslbl}"
+                <Button Content="{StaticResource Courseslbl}"
                         FontSize="16" 
                         Grid.ColumnSpan="2"
                         VerticalContentAlignment="Center"
                         Click="DisplayCoursesView"/>
-                </Grid>
+            </Grid>
 
-                <!--Students-->
-                <Grid Margin="12 42 12 2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="2*"/>
-                    </Grid.ColumnDefinitions>
-                    <Image Source="{StaticResource StudentIcon}"
+            <!--Students-->
+            <Grid Margin="12 42 12 2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="{StaticResource StudentIcon}"
                        Height="31"  
                        Margin="-20 0 10 0" 
                        Panel.ZIndex="1"/>
-                    <Button Content="{StaticResource Studentslbl}"
+                <Button Content="{StaticResource Studentslbl}"
                         Grid.ColumnSpan="2"
                         FontSize="16" 
                         VerticalContentAlignment="Center" 
                         Click="DisplayStudentsView"/>
-                </Grid>
+            </Grid>
 
-                <!--Events-->
-                <Grid Margin="12 42 12 2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="2*"/>
-                    </Grid.ColumnDefinitions>
-                    <Image Source="{StaticResource EventsIcon}"
+            <!--Events-->
+            <Grid Margin="12 42 12 2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="{StaticResource EventsIcon}"
                        Height="31"  
                        Margin="-20 0 10 0" 
                        Panel.ZIndex="1"/>
-                    <Button Content="{StaticResource Eventslbl}"
+                <Button Content="{StaticResource Eventslbl}"
                         Grid.ColumnSpan="2"
                         FontSize="16" 
                         VerticalContentAlignment="Center" 
                         Click="DisplayEventsView"/>
-                </Grid>
+            </Grid>
 
-
-            </StackPanel>
-        </ScrollViewer>
+        </StackPanel>
 
         <Frame x:Name="Main" 
                Grid.Row="1" 

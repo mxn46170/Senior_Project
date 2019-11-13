@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Administration.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,20 @@ namespace Administration.Views
     /// </summary>
     public partial class EventsView : UserControl
     {
+        private readonly EventsViewModel evm = new EventsViewModel();
         public EventsView()
         {
             InitializeComponent();
+            DataContext = evm;
+        }
+
+        private void SaveEventScreen(object sender, RoutedEventArgs e)
+        {
+            evm.Save();
+        }
+
+        private void Cancel(object sender, RoutedEventArgs e)
+        {
         }
     }
 }

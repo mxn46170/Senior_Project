@@ -26,7 +26,7 @@ namespace Administration
         private readonly MainWindowViewModel mvm = new MainWindowViewModel();
         public MainWindow()
         {
-            Thread.Sleep(1500);
+            //Thread.Sleep(1500);
             InitializeComponent();
             DataContext = mvm;
         }
