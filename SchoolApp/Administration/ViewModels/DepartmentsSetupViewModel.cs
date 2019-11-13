@@ -160,7 +160,7 @@ namespace Administration.ViewModels
                         }
                         break;
                 }
-                IsValid = (!string.IsNullOrWhiteSpace(DpName) && !string.IsNullOrWhiteSpace(DpAbbr)) ? true : false;
+                IsValid = (!string.IsNullOrWhiteSpace(DpName) && !string.IsNullOrWhiteSpace(DpAbbr));
                 return error;
             }
         }
