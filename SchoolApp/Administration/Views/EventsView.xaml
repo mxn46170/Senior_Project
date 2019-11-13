@@ -144,8 +144,8 @@
                     FontSize="14" 
                     HorizontalAlignment="Right" 
                     VerticalAlignment="Bottom"
-                    Margin="0 0 30 30" Click="Cancel"
-                    />
+                    Margin="0 0 30 30" 
+                    Click="Cancel"/>
         </StackPanel>
 
     </Grid>
