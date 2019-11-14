@@ -30,7 +30,7 @@
                     Width="200" Click="ChangePassword"/>
         </StackPanel>
 
-        <!--DO NOT remove the frame name and put it the app.xaml-->
+        <!--DON'T remove the frame name and put it the app.xaml-->
         <Frame x:Name="SettingsViews" 
                Grid.Row="1" 
                NavigationUIVisibility="Hidden"/>
