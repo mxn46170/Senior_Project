@@ -46,7 +46,7 @@
             <sys:String x:Key="CourseNamelbl">Course Name</sys:String>
             <sys:String x:Key="AddPreReqslbl">Add Pre-requisites</sys:String>
             <sys:String x:Key="Courseslbl">Courses</sys:String>
-            <sys:String x:Key="AddStudentlbl">Add Student/sys:String>
+            <sys:String x:Key="AddStudentlbl">Add Student</sys:String>
             <sys:String x:Key="StudentYear">Student Year</sys:String>
             <sys:String x:Key="Password">Password</sys:String>
             <sys:String x:Key="Minorlbl">Minor</sys:String>
