@@ -47,7 +47,15 @@
                        Margin="0 40 0 8"/>
             <ComboBox Width="200" 
                       HorizontalAlignment="Left" 
-                      FontSize="14"/>
+                      FontSize="14"
+                      ItemsSource="{Binding StudentYearCollection}"
+                      SelectedItem="{Binding SelectedStudentYear}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding StudentYearDescription}"></TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
 
             <TextBlock Text="{StaticResource Majorlbl}" 
                        FontWeight="Bold" 
@@ -55,15 +63,33 @@
                        Margin="0 40 0 8"/>
             <ComboBox Width="200" 
                       HorizontalAlignment="Left" 
-                      FontSize="14"/>
+                      FontSize="14"
+                      ItemsSource="{Binding MajorCollection}"
+                      SelectedItem="{Binding SelectedMajor}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding MajorDescription}"></TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
 
-            <TextBlock Text="{StaticResource Minorlbl}" 
-                       FontWeight="Bold" 
-                       FontSize="16" 
-                       Margin="0 40 0 8"/>
-            <ComboBox Width="200" 
-                      HorizontalAlignment="Left" 
-                      FontSize="14"/>
+            <StackPanel>
+                <TextBlock Text="{StaticResource Minorlbl}" 
+                           FontWeight="Bold" 
+                           FontSize="16" 
+                           Margin="0 40 0 8"/>
+                <ComboBox Width="200" 
+                          HorizontalAlignment="Left" 
+                          FontSize="14"
+                          ItemsSource="{Binding MajorCollection}"
+                          SelectedItem="{Binding SelectedMinor}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding MajorDescription}"></TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </StackPanel>
         </StackPanel>
         <StackPanel Grid.Column="1" 
                     Grid.Row="1"
@@ -84,8 +110,10 @@
                          Height="23"/>
 
             <CheckBox Content="{StaticResource AddMinorbtn}" 
-                      FontWeight="Bold" FontSize="16" 
-                      Margin="0 60 0 8"/>
+                      FontWeight="Bold"
+                      FontSize="16" 
+                      Margin="0 60 0 8"
+                      IsChecked="True"/>
         </StackPanel>
         
         <StackPanel Orientation="Horizontal" 
