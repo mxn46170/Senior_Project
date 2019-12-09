@@ -2,9 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Administration.ViewModels
 {
@@ -24,6 +26,9 @@ namespace Administration.ViewModels
         private ObservableCollection<Major> _majorCollection { get; set; } = new ObservableCollection<Major>();
         private ObservableCollection<StudentYear> _studentYearCollection { get; set; } = new ObservableCollection<StudentYear>();
         private bool _isValid;
+        private bool _hasMinor;
+        private String _firstName;
+        private String _lastName;
         private String _major;
         private Major _selectedMajor;
         private Major _selectedMinor;
@@ -66,6 +71,45 @@ namespace Administration.ViewModels
             {
                 _isValid = value;
                 propertyChanged(nameof(IsValid));
+            }
+        }
+
+        public bool HasMinor
+        {
+            get
+            {
+                return _hasMinor;
+            }
+            set
+            {
+                _hasMinor = value;
+                propertyChanged(nameof(HasMinor));
+            }
+        }
+
+        public string FirstName
+        {
+            get
+            {
+                return _firstName;
+            }
+            set
+            {
+                _firstName = value;
+                propertyChanged(nameof(FirstName));
+            }
+        }
+
+        public string LastName
+        {
+            get
+            {
+                return _lastName;
+            }
+            set
+            {
+                _lastName = value;
+                propertyChanged(nameof(LastName));
             }
         }
 
@@ -177,6 +221,107 @@ namespace Administration.ViewModels
                 //MessageBox.Show(ex.Message);
                 return;
             }
+        }
+
+        /// <summary>
+        /// Attempts to add student to database if all necessary fields have input, otherwise error MessageBox is displayed
+        /// </summary>
+        /// <returns></returns>
+        public void CommitStudent()
+        {
+            if (FormCompleted())
+            {
+                try
+                {
+                    using (var context = new SchoolU_DBEntities())
+                    {
+                        context.Database.Connection.Open();
+                        var temp = new Student()
+                        {
+                            StudentFirstName = FirstName,
+                            StudentLastName  = LastName,
+                            StudentUserName  = "username",
+                            StudentEmail     = null,
+                            StudentPassword  = "password",
+                            StudentYearId    = YearOf(nameof(SelectedStudentYear))
+                        };
+                        context.Entry(temp).State = EntityState.Added;
+                        context.SaveChanges();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    //MessageBox.Show(ex.Message);
+                    return;
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Please make sure all necessary fields are completed.", "Input Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+        /// <summary>
+        /// Clears fields and resets selections
+        /// </summary>
+        /// <returns></returns>
+        public void Reset()
+        {
+            ClearFields();
+            ResetSelections();
+        }
+
+        /// <summary>
+        /// Clears all TextBox fields
+        /// </summary>
+        /// <returns></returns>
+        public void ClearFields()
+        {
+            FirstName = string.Empty;
+            LastName = string.Empty;
+            // TODO - reset PasswordBox content
+        }
+
+        /// <summary>
+        /// Resets all ComboBox selections
+        /// </summary>
+        /// <returns></returns>
+        public void ResetSelections()
+        {
+            // Clear selections from ComboBoxes
+            SelectedStudentYear = null;
+            SelectedMajor = null;
+            SelectedMinor = null;
+            HasMinor = false;
+        }
+        #endregion
+
+        #region Private Methods
+        private int YearOf(String year)
+        {
+            switch (year)
+            {
+                case "Freshman":
+                    return 1;
+                case "Sophomore":
+                    return 2;
+                case "Junior":
+                    return 3;
+                case "Senior":
+                    return 4;
+                default:
+                    return 0;
+            }
+        }
+
+        /// <summary>
+        /// Determines if all necessary input fields and selections have been completed
+        /// </summary>
+        /// <returns></returns>
+        private bool FormCompleted()
+        {
+            return true;
         }
         #endregion
 
