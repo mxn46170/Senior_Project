@@ -5,14 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Administration.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+             d:DesignHeight="750" d:DesignWidth="800">
+    <Grid Margin="0,0,0,-207">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.4*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-            
+
         <StackPanel Grid.ColumnSpan="2"
                     Margin="30 0 0 0 ">
             <TextBlock Text="{StaticResource SchoolYearlbl}"
@@ -29,7 +29,7 @@
                      Width="300"
                      HorizontalAlignment="Left"
                      FontSize="14"
-                     IsReadOnly="True"/>
+                     Text="{Binding CurrentSchoolYear, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
         </StackPanel>
 
         <StackPanel Grid.Column="0"
@@ -39,7 +39,8 @@
                        FontSize="16"
                        Margin="0 30 0 0"/>
             <DatePicker Width="140"
-                        HorizontalAlignment="Left"/>
+                        HorizontalAlignment="Left"
+                        SelectedDate="{Binding YearStartDate, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 
             <TextBlock Text="{StaticResource Semesterslbl}"
                        FontSize="20"
@@ -50,13 +51,14 @@
                        FontSize="18"
                        FontWeight="Bold"
                        Margin="0 30 0 0"/>
-            
+
             <TextBlock Text="{StaticResource StartDatelbl}"
                        FontWeight="Bold"
                        FontSize="16"
                        Margin="0 8 0 0"/>
             <DatePicker Width="140"
-                        HorizontalAlignment="Left"/>
+                        HorizontalAlignment="Left"
+                        SelectedDate="{Binding SpringStartDate, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 
             <TextBlock Text="{StaticResource Falllbl}"
                        FontSize="18"
@@ -67,7 +69,8 @@
                        FontSize="16"
                        Margin="0 8 0 0"/>
             <DatePicker Width="140"
-                        HorizontalAlignment="Left"/>
+                        HorizontalAlignment="Left"
+                        SelectedDate="{Binding FallStartDate, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 
             <TextBlock Text="{StaticResource Summerlbl}"
                        FontSize="18"
@@ -78,57 +81,71 @@
                        FontSize="16"
                        Margin="0 8 0 0"/>
             <DatePicker Width="140"
-                        HorizontalAlignment="Left"/>
+                        HorizontalAlignment="Left"
+                        SelectedDate="{Binding SummerStartDate, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
         </StackPanel>
 
         <StackPanel Grid.Column="1"
-                    Margin="0 145 0 0">
+                    Margin="0 145 400 0">
             <TextBlock Text="{StaticResource EndDatelbl}"
                        FontWeight="Bold"
                        FontSize="16"/>
             <DatePicker Width="150"
-                        HorizontalAlignment="Left"/>
-            
+                        HorizontalAlignment="Left"
+                        SelectedDate="{Binding YearEndDate, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+
             <TextBlock Text="{StaticResource EndDatelbl}"
                        FontWeight="Bold"
                        FontSize="16"
                        Margin="0 111 0 0"/>
             <DatePicker Width="150"
                         HorizontalAlignment="Left"
-                        Margin="0 8 0 0"/>
-            
+                        Margin="0 8 0 0"
+                        SelectedDate="{Binding SpringEndDate, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+
             <TextBlock Text="{StaticResource EndDatelbl}"
                        FontWeight="Bold"
                        FontSize="16"
                        Margin="0 54 0 0"/>
             <DatePicker Width="150"
                         HorizontalAlignment="Left"
-                        Margin="0 8 0 0"/>
-            
+                        Margin="0 8 0 0"
+                        SelectedDate="{Binding FallEndDate, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+
             <TextBlock Text="{StaticResource EndDatelbl}"
                        FontWeight="Bold"
                        FontSize="16"
                        Margin="0 53 0 0"/>
             <DatePicker Width="150"
                         HorizontalAlignment="Left"
-                        Margin="0 8 0 0"/>
+                        Margin="0 8 0 0"
+                        SelectedDate="{Binding SummerEndDate, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
         </StackPanel>
 
-        <Button Grid.Column="1"
+        <StackPanel Orientation="Horizontal" 
+                    Grid.Column="1" 
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                    Margin="0 0 200 250">
+            
+        <Button
                 Height="30"
                 Width="80"
-                Content="{StaticResource Cancellbl}"
-                FontSize="14"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Bottom"
-                Margin="0 0 30 30"/>
-        <Button Grid.Column="1"
-                Height="30"
-                Width="80"
+                IsEnabled="{Binding IsSaveEnabled}"
                 Content="{StaticResource Savelbl}"
                 FontSize="14"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Bottom"
-                Margin="0 0 130 30"/>
+                Click="SaveYear"
+            Margin="0 0 0 20"
+                />
+            <Button
+                Height="30"
+                Width="80"
+                IsEnabled="True"
+                Content="{StaticResource Cancellbl}"
+                FontSize="14"
+                Click="ClearFields"
+                Margin="10 0 20 20"
+                />
+        </StackPanel>
     </Grid>
 </UserControl>

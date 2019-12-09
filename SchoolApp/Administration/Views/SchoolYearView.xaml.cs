@@ -20,9 +20,23 @@ namespace Administration.Views
     /// </summary>
     public partial class SchoolYearView : UserControl
     {
+        private readonly ViewModels.SchoolYearViewModel syvm = new ViewModels.SchoolYearViewModel();
+
         public SchoolYearView()
         {
             InitializeComponent();
+            DataContext = syvm;
+        }
+
+        private void SaveYear(object sender, RoutedEventArgs e)
+        {
+            syvm.Save();
+            syvm.ClearFields();
+        }
+
+        private void ClearFields(object sender, RoutedEventArgs e)
+        {
+            syvm.ClearFields();
         }
     }
 }
