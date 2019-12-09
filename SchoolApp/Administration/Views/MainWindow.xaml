@@ -2,8 +2,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:controls="clr-namespace:Administration.Views"
-        xmlns:local="clr-namespace:Administration"
         xmlns:ViewModels="clr-namespace:Administration.ViewModels" 
         x:Class="Administration.MainWindow"
         mc:Ignorable="d"
@@ -13,43 +11,6 @@
     <Window.DataContext>
         <ViewModels:MainWindowViewModel/>
     </Window.DataContext>
-
-    <!--Admin Navigation-->
-    <Window.Resources>
-        <DataTemplate DataType="{x:Type ViewModels:SchoolSetupViewModel}">
-            <controls:SchoolSetupView/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type ViewModels:SchoolYearViewModel}">
-            <controls:SchoolYearView/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type ViewModels:ProfessorsViewModel}">
-            <controls:ProfessorsView/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type ViewModels:DepartmentsSetupViewModel}">
-            <controls:DepartmentsSetupView/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type ViewModels:BuildingsSetupViewModel}">
-            <controls:BuildingsSetupView/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type ViewModels:MajorMinorViewModel}">
-            <controls:MajorMinorView/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type ViewModels:StudentsViewModel}">
-            <controls:StudentsView/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type ViewModels:CoursesViewModel}">
-            <controls:CoursesView/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type ViewModels:EventsViewModel}">
-            <controls:EventsView/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type ViewModels:AddEditStudentsViewModel}">
-            <controls:AddEditStudentsView/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type ViewModels:StudentSearchViewModel}">
-            <controls:StudentSearchView/>
-        </DataTemplate>
-    </Window.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -90,7 +51,8 @@
                             Width="40" 
                             ToolTip="{StaticResource Settingslbl}" 
                             Padding="-8" 
-                            Margin="10 0 0 0">
+                            Margin="10 0 0 0" 
+                            Click="OpenSettingsView">
                         <Image Source="{StaticResource SettingsIcon}" 
                                Height="30" 
                                Width="30" />

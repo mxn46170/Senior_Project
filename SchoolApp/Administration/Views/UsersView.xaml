@@ -11,7 +11,7 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        
+
         <TextBlock Text="{StaticResource AddUserslbl}" 
                    FontSize="26" 
                    HorizontalAlignment="Center" 
@@ -23,15 +23,15 @@
             <TextBlock Text="{StaticResource Usernamelbl}"
                        FontWeight="Bold" 
                        FontSize="16"
-                       Margin="10 0 0 10"/>
-            <TextBox Margin="0 0 0 0"
+                       Margin="0 0 0 10"/>
+            <TextBox Margin="0 0 0 30"
                      Width="200"
                      HorizontalAlignment="Left"/>
             <TextBlock Text="{StaticResource Passwordlbl}"
                        FontWeight="Bold" 
                        FontSize="16"
-                       Margin="10 0 0 10"/>
-            <PasswordBox Margin="10 0 50 10"
+                       Margin="0 0 0 10"/>
+            <PasswordBox Margin="0 0 50 30"
                          Width="200"
                          HorizontalAlignment="Left"/>
             <TextBlock Text="{StaticResource UserTypelbl}"
@@ -45,6 +45,23 @@
                 <ComboBoxItem Content="{StaticResource Professorlbl}"/>
                 <ComboBoxItem Content="{StaticResource Studentlbl}"/>
             </ComboBox>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1"
+                    Orientation="Horizontal"
+                    VerticalAlignment="Bottom"
+                    HorizontalAlignment="Right"
+                    Margin="0 0 20 20">
+            <Button Content="{StaticResource Addlbl}"
+                    Margin="20 20 0 20"
+                    HorizontalAlignment="Left"
+                    Height="30"
+                    Width="150"/>
+            <Button Content="{StaticResource Cancellbl}"
+                    Margin="20 20 0 20"
+                    HorizontalAlignment="Left"
+                    Height="30"
+                    Width="150"/>
         </StackPanel>
     </Grid>
 </UserControl>

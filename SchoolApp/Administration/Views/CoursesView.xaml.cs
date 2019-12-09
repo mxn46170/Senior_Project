@@ -52,13 +52,12 @@ namespace Administration.Views
 
         private void Edit_SaveChanges(object sender, RoutedEventArgs e)
         {
-            //cvm.SaveEdits();
+            cvm.EditOrSave();
         }
 
         private void DeleteCourse(object sender, RoutedEventArgs e)
         {
-            cvm.DeleteSelectedCourse_PreRequisites();
-            cvm.DeleteSelectedCourse();
+            cvm.DeleteSelectedItem();
         }
     }
 }

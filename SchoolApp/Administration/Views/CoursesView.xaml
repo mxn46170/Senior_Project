@@ -47,7 +47,7 @@
                 <ComboBox Margin="10 0 50 0" 
                           FontSize="14"
                           ItemsSource="{Binding DepartmentCollection}"
-                          SelectedValue="{Binding SelectedDepartment, ValidatesOnDataErrors=True}">
+                          SelectedValue="{Binding SelectedDepartment, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding DepartmentName}"/>
@@ -60,7 +60,7 @@
                 <TextBlock Text="{StaticResource CourseNamelbl}"
                            FontWeight="Bold" 
                            FontSize="16"
-                           Margin="10 0 0 10"/>
+                           Margin="10 10 0 10"/>
                 <TextBox Margin="10 0 50 0"
                          Text="{Binding CourseName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
             </StackPanel>
@@ -89,7 +89,8 @@
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn DisplayMemberBinding="{Binding CourseName}" 
-                                                Width="200"/>
+                                                Width="200">
+                                </GridViewColumn>
                             </GridView>
                         </ListView.View>
                     </ListView>

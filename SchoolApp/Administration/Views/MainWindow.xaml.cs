@@ -95,6 +95,11 @@ namespace Administration
             Main.Content = new EventsViewModel();
         }
 
+        private void OpenSettingsView(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new SettingsViewModel();
+        }
         #endregion
+
     }
 }

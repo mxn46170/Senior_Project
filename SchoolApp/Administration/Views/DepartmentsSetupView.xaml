@@ -11,18 +11,6 @@
         <local:DepartmentsSetupViewModel/>
     </UserControl.DataContext>
 
-    <UserControl.Resources>
-        <Style TargetType="TextBox">
-            <Style.Triggers>
-                <Trigger Property="Validation.HasError" Value="true">
-                    <Setter Property="ToolTip"
-                            Value="{Binding RelativeSource={x:Static RelativeSource.Self},
-                                    Path=(Validation.Errors)[0].ErrorContent}"/>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-    </UserControl.Resources>
-    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -62,41 +50,44 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <ListView Height="400" 
-                      Width="550" 
-                      HorizontalAlignment="Left" 
+            <ListView Height="400"
+                      Width="550"
+                      HorizontalAlignment="Left"
                       VerticalAlignment="Top"
                       Margin="0 0 0 8"
-                      ItemsSource="{Binding DepartmentCollection}">
+                      ItemsSource="{Binding DepartmentCollection}"
+                      SelectedValue="{Binding SelectedDepartment}">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Department Name" 
-                                        Width="250" 
+                        <GridViewColumn Header="Department Name"
+                                        Width="250"
                                         DisplayMemberBinding="{Binding DepartmentName}"/>
                         <GridViewColumn Header="Abbr"
-                                        Width="100" 
+                                        Width="100"
                                         DisplayMemberBinding="{Binding DepartmentAbbr}"/>
                     </GridView>
                 </ListView.View>
-                
             </ListView>
-        
-        
+
             <StackPanel Grid.Column="1"
                         Margin="0 0 70 0">
-                <Button Content="{StaticResource Addlbl}" 
+                <Button Content="{StaticResource Addlbl}"
                         Height="30"
-                        Margin="0 0 0 20" 
+                        Margin="0 0 0 20"
                         Click="AddDepartment"
                         IsEnabled="{Binding IsValid, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
                 <Button Content="{StaticResource Editlbl}"
                         Height="30"
-                        Margin="0 0 0 20"/>
+                        Margin="0 0 0 20"
+                        IsEnabled="{Binding IsEditEnabled, UpdateSourceTrigger=PropertyChanged}"/>
                 <Button Content="{StaticResource Deletelbl}"
                         Height="30"
-                        Margin="0 0 0 20"/>
-                <Button Content="{StaticResource Cancellbl}" 
-                        Height="30"/>
+                        Margin="0 0 0 20"
+                        Click="DeleteDepartment"
+                        IsEnabled="{Binding IsDeleteEnabled, UpdateSourceTrigger=PropertyChanged}"/>
+                <Button Content="{StaticResource Cancellbl}"
+                        Height="30"
+                        Click="Cancel"/>
             </StackPanel>
         </Grid>
         

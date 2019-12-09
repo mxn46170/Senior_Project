@@ -34,5 +34,15 @@ namespace Administration.Views
             dpvm.AddDepartment();
             dpvm.ClearFields();
         }
+
+        private void DeleteDepartment(object sender, RoutedEventArgs e)
+        {
+            dpvm.DeleteDepartment();
+        }
+
+        private void Cancel(object sender, RoutedEventArgs e)
+        {
+            dpvm.ClearFields();
+        }
     }
 }

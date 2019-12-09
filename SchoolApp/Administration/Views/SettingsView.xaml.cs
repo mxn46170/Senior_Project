@@ -17,20 +17,26 @@ using System.Windows.Shapes;
 namespace Administration.Views
 {
     /// <summary>
-    /// Interaction logic for StudentSearchView.xaml
+    /// Interaction logic for SettingsView.xaml
     /// </summary>
-    public partial class StudentSearchView : UserControl
+    public partial class SettingsView : UserControl
     {
-        private readonly StudentSearchViewModel ssvm = new StudentSearchViewModel();
-        public StudentSearchView()
+        public SettingsView()
         {
             InitializeComponent();
-            DataContext = ssvm;
         }
 
-        private void ClearFilters(object sender, RoutedEventArgs e)
+        #region Navigation for Settings
+        private void OpenAddUsersView(object sender, RoutedEventArgs e)
         {
-            ssvm.ClearFilters();
+            SettingsContent.Content = new UsersViewModel();
+        }
+
+        #endregion
+
+        private void OpenUsernamePasswordView(object sender, RoutedEventArgs e)
+        {
+            SettingsContent.Content = new UsernamePasswordViewModel();
         }
     }
 }
