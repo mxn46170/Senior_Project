@@ -303,7 +303,7 @@ namespace Administration.ViewModels
         /// <returns></returns>
         public bool IsCourseItsOwnPreRequisite()
         {
-            return GetPreReqIds().Contains(SelectedCourseCollection.Where(i => i.CourseName == CourseName).Select(i => i.CourseId).Single());
+            return GetPreReqIds().Contains(SelectedCourseCollection.Where(i => i.CourseName == CourseName).Select(i => i.CourseId).SingleOrDefault();
         }
 
         /// <summary>
