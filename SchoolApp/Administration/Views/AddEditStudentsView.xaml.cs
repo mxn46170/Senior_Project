@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Administration.ViewModels;
 
 namespace Administration.Views
 {
@@ -20,9 +21,24 @@ namespace Administration.Views
     /// </summary>
     public partial class AddEditStudentsView : UserControl
     {
+        private readonly AddEditStudentsViewModel addEditStudentsViewModel = new AddEditStudentsViewModel();
         public AddEditStudentsView()
         {
             InitializeComponent();
+            DataContext = addEditStudentsViewModel;
+        }
+
+        private void AddButtonClicked(object sender, RoutedEventArgs e)
+        {
+            addEditStudentsViewModel.CommitStudent();
+            PwdBox.Clear();
+        }
+
+        private void CancelButtonClicked(object sender, RoutedEventArgs e)
+        {
+            addEditStudentsViewModel.Reset();
+            PwdBox.Clear();
         }
     }
+
 }
