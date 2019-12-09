@@ -82,7 +82,6 @@ namespace UserLogin.ViewModels
                     {
                         MessageBox.Show("Incorrect username or password", "Failed Login", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     }
-                    Application.Current.Shutdown();
                 }
             }
             catch (Exception ex)
