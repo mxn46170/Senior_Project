@@ -36,5 +36,14 @@ namespace UserLogin
                 mvm.ValidateUserLogin(PwdBox.Password);
             }
         }
+
+        private void OnEnterBtnClick(object sender, KeyEventArgs e)
+        {
+            if (e.Key != Key.Enter)
+            {
+                return;
+            }
+            mvm.ValidateUserLogin(PwdBox.Password);
+        }
     }
 }

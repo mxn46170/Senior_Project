@@ -53,7 +53,8 @@
                            FontWeight="ExtraBold"
                            Margin="0 0 0 3"/>
                 <PasswordBox Name="PwdBox"
-                             Height="23"/>
+                             Height="23" KeyDown="OnEnterBtnClick"
+                             />
             </StackPanel>
 
             <!--Login Button-->
