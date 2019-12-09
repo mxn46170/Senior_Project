@@ -69,14 +69,17 @@ namespace UserLogin.ViewModels
                     if (admin != null)
                     {
                         Process.Start("Administration.exe");
+                        Application.Current.Shutdown();
                     }
                     else if (student != null)
                     {
                         Process.Start("SchoolApp_Student.exe");
+                        Application.Current.Shutdown();
                     }
                     else if (professor != null)
                     {
                         Process.Start("SchoolApp_Professor.exe");
+                        Application.Current.Shutdown();
                     }
                     else
                     {
