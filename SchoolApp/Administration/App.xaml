@@ -2,6 +2,8 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:controls="clr-namespace:Administration.Views"
+             xmlns:ViewModels="clr-namespace:Administration.ViewModels"
              StartupUri="Views/MainWindow.xaml">
     <Application.Resources>
 
@@ -89,6 +91,7 @@
             <sys:String x:Key="Usernamelbl">Username</sys:String>
             <sys:String x:Key="Passwordlbl">Password</sys:String>
             <sys:String x:Key="UserTypelbl">User Type</sys:String>
+            <sys:String x:Key="ChangePasswordlbl">Username / Password</sys:String>
 
             <!--Hard-coded Image locations-->
             <BitmapImage x:Key="HomeIcon" UriSource="..\Images\Icons\Home.ico"/>
@@ -118,14 +121,58 @@
                     </Trigger>
                 </Style.Triggers>
             </Style>
-            
+
+            <!--MainWindow Navigation-->
+            <DataTemplate DataType="{x:Type ViewModels:SchoolSetupViewModel}">
+                <controls:SchoolSetupView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type ViewModels:SchoolYearViewModel}">
+                <controls:SchoolYearView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type ViewModels:ProfessorsViewModel}">
+                <controls:ProfessorsView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type ViewModels:DepartmentsSetupViewModel}">
+                <controls:DepartmentsSetupView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type ViewModels:BuildingsSetupViewModel}">
+                <controls:BuildingsSetupView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type ViewModels:MajorMinorViewModel}">
+                <controls:MajorMinorView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type ViewModels:StudentsViewModel}">
+                <controls:StudentsView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type ViewModels:CoursesViewModel}">
+                <controls:CoursesView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type ViewModels:EventsViewModel}">
+                <controls:EventsView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type ViewModels:AddEditStudentsViewModel}">
+                <controls:AddEditStudentsView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type ViewModels:StudentSearchViewModel}">
+                <controls:StudentSearchView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type ViewModels:SettingsViewModel}">
+                <controls:SettingsView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type ViewModels:UsersViewModel}">
+                <controls:UsersView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type ViewModels:UsernamePasswordViewModel}">
+                <controls:UsernamePasswordView/>
+            </DataTemplate>
+
             <!--Themes-->
-        <ResourceDictionary.MergedDictionaries>
-            <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
-            <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
-            <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
-            <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
-        </ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.DeepPurple.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Lime.xaml" />
+            </ResourceDictionary.MergedDictionaries>
 
         </ResourceDictionary>
 
